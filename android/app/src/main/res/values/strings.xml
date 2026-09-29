@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="process_text_label">Check with Jemixo Safe</string>
+    <string name="tile_label">Check clipboard</string>
+    <string name="widget_label">Jemixo Safe status</string>
+    <string name="widget_description">Your last phone safety check at a glance.</string>
+    <string name="notification_channel_installs">New app alerts</string>
+    <string name="notification_channel_installs_description">Tells you when a newly installed app asks for sensitive access.</string>
+</resources>

@@ -1,0 +1,51 @@
+name: jemixo_safe
+description: "Jemixo Safe — on-device Android security, privacy and device utility. Know Your Phone. Protect Your Privacy."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  drift: ^2.35.0
+  drift_flutter: ^0.3.1
+  provider: ^6.1.5+1
+  permission_handler: ^13.0.2
+  share_plus: ^13.3.0
+  pdf: ^3.13.1
+  mobile_scanner: ^7.4.2
+  image: ^4.10.1
+  sensors_plus: ^7.1.0
+  url_launcher: ^6.3.2
+  path_provider: ^2.1.6
+  google_mlkit_text_recognition: ^0.15.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  drift_dev: ^2.35.0
+  build_runner: ^2.16.1
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+
+  assets:
+    - assets/branding/
+    - assets/data/

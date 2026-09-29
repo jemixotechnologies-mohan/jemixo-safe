@@ -1,0 +1,2856 @@
+{
+  "version": 3,
+  "updatedAt": "2026-09-30",
+  "note": "Bundled starter data. The app replaces it with the same file served from threatDataUrl when a newer version is published. Package names are the official Play Store identifiers; signatures are optional and only checked when present.",
+  "phrases": {
+    "urgent": [
+      "turant",
+      "turant karo",
+      "abhi karo",
+      "jaldi karo",
+      "aaj hi",
+      "24 ghante",
+      "24 ghanton",
+      "aakhri mauka",
+      "aakhri chetavni",
+      "last chance",
+      "samay khatam",
+      "तुरंत",
+      "अभी करें",
+      "जल्दी करें",
+      "आज ही",
+      "24 घंटे",
+      "आखिरी मौका",
+      "आखिरी चेतावनी",
+      "abhi ke abhi",
+      "turant kare",
+      "aaj raat tak",
+      "ek ghante ke andar",
+      "अभी के अभी",
+      "एक घंटे के अंदर",
+      "आज रात तक"
+    ],
+    "threat": [
+      "band ho jayega",
+      "band kar diya jayega",
+      "block ho jayega",
+      "block kar diya jayega",
+      "kanooni karyawahi",
+      "police complaint",
+      "fir darj",
+      "case darj",
+      "giraftar",
+      "giraftari",
+      "jurmana",
+      "penalty lagega",
+      "connection kat",
+      "bijli kat di jayegi",
+      "बंद हो जाएगा",
+      "ब्लॉक हो जाएगा",
+      "कानूनी कार्रवाई",
+      "गिरफ्तार",
+      "गिरफ्तारी",
+      "जुर्माना",
+      "बिजली काट",
+      "warrant nikla",
+      "warrant jari",
+      "court se",
+      "supreme court",
+      "high court",
+      "case ho jayega",
+      "jail ho jayegi",
+      "वारंट",
+      "कोर्ट से",
+      "जेल हो जाएगी",
+      "केस दर्ज"
+    ],
+    "otp": [
+      "otp batao",
+      "otp bhejo",
+      "otp share karo",
+      "otp bataye",
+      "pin batao",
+      "pin bhejo",
+      "upi pin batao",
+      "cvv batao",
+      "card number batao",
+      "password batao",
+      "anydesk install",
+      "screen share karo",
+      "ओटीपी",
+      "ओटीपी बताएं",
+      "पिन बताएं",
+      "पासवर्ड बताएं",
+      "सीवीवी",
+      "otp ki jarurat",
+      "otp chahiye",
+      "code batao",
+      "code bhejo",
+      "verification code batao",
+      "कोड बताएं",
+      "कोड भेजें",
+      "ओटीपी चाहिए"
+    ],
+    "payment": [
+      "paise bhejo",
+      "paise bhejiye",
+      "payment karo",
+      "payment kijiye",
+      "fees jama karo",
+      "fees bharo",
+      "processing fees",
+      "registration fees",
+      "advance payment",
+      "qr scan karo",
+      "is number par bhejo",
+      "पैसे भेजें",
+      "पैसे भेजो",
+      "भुगतान करें",
+      "फीस जमा करें",
+      "रुपये भेजें",
+      "क्यूआर स्कैन",
+      "rs bhejo",
+      "rupees bhejo",
+      "paise transfer karo",
+      "account me daalo",
+      "upi karo",
+      "gpay karo",
+      "phonepe karo",
+      "paytm karo",
+      "पैसे ट्रांसफ़र करें",
+      "यूपीआई करें",
+      "खाते में डालें"
+    ],
+    "kyc": [
+      "kyc karo",
+      "kyc karwao",
+      "kyc update karo",
+      "kyc karaye",
+      "kyc pending hai",
+      "kyc expire",
+      "aadhaar update",
+      "aadhar update",
+      "pan update",
+      "sim band ho jayega",
+      "sim block",
+      "केवाईसी",
+      "केवाईसी अपडेट",
+      "आधार अपडेट",
+      "पैन अपडेट",
+      "सिम बंद",
+      "सिम ब्लॉक",
+      "kyc nahi hua",
+      "kyc suspend",
+      "pan link karo",
+      "aadhaar link karo",
+      "आधार लिंक करें",
+      "पैन लिंक करें",
+      "केवाईसी सस्पेंड"
+    ],
+    "reward": [
+      "inaam jeeta",
+      "inam jeeta",
+      "aapne jeeta",
+      "aap jeet gaye",
+      "lucky draw",
+      "lottery jeeti",
+      "muft gift",
+      "free gift",
+      "cash prize",
+      "badhai ho aapne",
+      "इनाम",
+      "इनाम जीता",
+      "आपने जीता",
+      "लॉटरी",
+      "लकी ड्रॉ",
+      "मुफ्त गिफ्ट",
+      "बधाई हो आपने",
+      "gift card jeeta",
+      "car jeeti",
+      "bike jeeti",
+      "scratch card jeeta",
+      "कार जीती",
+      "स्क्रैच कार्ड",
+      "गिफ़्ट जीता"
+    ],
+    "block": [
+      "account band",
+      "khata band",
+      "account block",
+      "account suspend",
+      "sim band",
+      "bijli band",
+      "connection band",
+      "service band ho jayegi",
+      "खाता बंद",
+      "अकाउंट बंद",
+      "अकाउंट ब्लॉक",
+      "सिम बंद",
+      "बिजली बंद",
+      "electricity band",
+      "bijli aaj raat",
+      "meter band",
+      "recharge nahi hua",
+      "बिजली आज रात",
+      "मीटर बंद",
+      "रिचार्ज नहीं हुआ"
+    ],
+    "job": [
+      "ghar baithe kamao",
+      "ghar baithe paise",
+      "ghar se kaam",
+      "roz kamao",
+      "daily kamao",
+      "paisa double",
+      "guaranteed return",
+      "part time kaam",
+      "task complete karo",
+      "like karke kamao",
+      "youtube like task",
+      "घर बैठे",
+      "घर बैठे कमाएं",
+      "रोज़ कमाएं",
+      "रोज कमाएं",
+      "पैसा डबल",
+      "पार्ट टाइम काम",
+      "गारंटीड रिटर्न",
+      "daily 2000",
+      "daily 5000",
+      "roz 2000",
+      "roz 5000",
+      "commission milega",
+      "apne ghar se",
+      "कमीशन मिलेगा",
+      "रोज़ 2000",
+      "रोज़ 5000"
+    ],
+    "secrecy": [
+      "kisi ko mat batana",
+      "kisi ko na batayen",
+      "gupt rakhe",
+      "phone mat katna",
+      "call mat kato",
+      "bank ko mat batana",
+      "family ko mat batana",
+      "किसी को मत बताना",
+      "किसी को न बताएं",
+      "गुप्त रखें",
+      "फोन मत काटना",
+      "बैंक को मत बताना",
+      "kisi se baat mat karna",
+      "kisi ko call mat karna",
+      "ye baat gupt",
+      "किसी से बात मत करना",
+      "किसी को कॉल मत करना"
+    ],
+    "impersonation": [
+      "police station se",
+      "cbi se bol raha",
+      "customs department",
+      "narcotics",
+      "cyber cell se",
+      "bank manager bol raha",
+      "bank se bol raha",
+      "courier company",
+      "parcel rok liya",
+      "bijli vibhag",
+      "bijli bill bakaya",
+      "traffic challan",
+      "income tax vibhag",
+      "rbi se",
+      "trai se",
+      "पुलिस",
+      "सीबीआई",
+      "कस्टम विभाग",
+      "नारकोटिक्स",
+      "साइबर सेल",
+      "बैंक मैनेजर",
+      "कूरियर",
+      "पार्सल",
+      "बिजली विभाग",
+      "बिजली बिल",
+      "ट्रैफिक चालान",
+      "आयकर विभाग",
+      "crime branch",
+      "ed se",
+      "enforcement directorate",
+      "mumbai police",
+      "delhi police",
+      "fedex se",
+      "dhl se",
+      "bluedart se",
+      "trai se bol raha",
+      "क्राइम ब्रांच",
+      "प्रवर्तन निदेशालय",
+      "मुंबई पुलिस",
+      "दिल्ली पुलिस"
+    ]
+  },
+  "blockedDomains": [],
+  "brands": [
+    {
+      "keyword": "sbi",
+      "brand": "State Bank of India",
+      "packages": [
+        "com.sbi.lotusintouch",
+        "com.sbi.SBIFreedomPlus",
+        "com.sbicard.mobile"
+      ],
+      "prefixes": [
+        "com.sbi.",
+        "com.sbicard."
+      ]
+    },
+    {
+      "keyword": "yono",
+      "brand": "SBI YONO",
+      "packages": [
+        "com.sbi.lotusintouch",
+        "com.sbi.SBIFreedomPlus"
+      ],
+      "prefixes": [
+        "com.sbi."
+      ]
+    },
+    {
+      "keyword": "state bank",
+      "brand": "State Bank of India",
+      "packages": [
+        "com.sbi.lotusintouch",
+        "com.sbi.SBIFreedomPlus"
+      ],
+      "prefixes": [
+        "com.sbi."
+      ]
+    },
+    {
+      "keyword": "hdfc",
+      "brand": "HDFC Bank",
+      "packages": [
+        "com.snapwork.hdfc",
+        "com.hdfcbank.payzapp"
+      ],
+      "prefixes": [
+        "com.hdfcbank.",
+        "com.hdfc."
+      ]
+    },
+    {
+      "keyword": "icici",
+      "brand": "ICICI Bank",
+      "packages": [
+        "com.csam.icici.bank.imobile"
+      ],
+      "prefixes": [
+        "com.icicibank.",
+        "com.csam.icici."
+      ]
+    },
+    {
+      "keyword": "axis",
+      "brand": "Axis Bank",
+      "packages": [
+        "com.axis.mobile"
+      ],
+      "prefixes": [
+        "com.axis.",
+        "com.axisbank."
+      ]
+    },
+    {
+      "keyword": "kotak",
+      "brand": "Kotak Mahindra Bank",
+      "packages": [
+        "com.msf.kbank.mobile"
+      ],
+      "prefixes": [
+        "com.kotak."
+      ]
+    },
+    {
+      "keyword": "pnb",
+      "brand": "Punjab National Bank",
+      "packages": [
+        "com.Version1"
+      ],
+      "prefixes": [
+        "com.pnb."
+      ]
+    },
+    {
+      "keyword": "bank of baroda",
+      "brand": "Bank of Baroda",
+      "packages": [
+        "com.bankofbaroda.mconnectplus"
+      ],
+      "prefixes": [
+        "com.bankofbaroda."
+      ]
+    },
+    {
+      "keyword": "bob world",
+      "brand": "Bank of Baroda",
+      "packages": [
+        "com.bankofbaroda.mconnectplus"
+      ],
+      "prefixes": [
+        "com.bankofbaroda."
+      ]
+    },
+    {
+      "keyword": "canara",
+      "brand": "Canara Bank",
+      "packages": [
+        "com.canarabank.mobility"
+      ],
+      "prefixes": [
+        "com.canarabank."
+      ]
+    },
+    {
+      "keyword": "union bank",
+      "brand": "Union Bank of India",
+      "packages": [
+        "com.infrasoft.uboi"
+      ],
+      "prefixes": [
+        "com.unionbank."
+      ]
+    },
+    {
+      "keyword": "indusind",
+      "brand": "IndusInd Bank",
+      "packages": [
+        "com.fss.indus"
+      ],
+      "prefixes": [
+        "com.indusind."
+      ]
+    },
+    {
+      "keyword": "idfc",
+      "brand": "IDFC FIRST Bank",
+      "packages": [
+        "com.idfcfirstbank.optimus"
+      ],
+      "prefixes": [
+        "com.idfcfirstbank."
+      ]
+    },
+    {
+      "keyword": "yes bank",
+      "brand": "YES Bank",
+      "packages": [
+        "com.yesbank.yesmobile"
+      ],
+      "prefixes": [
+        "com.yesbank."
+      ]
+    },
+    {
+      "keyword": "bank of india",
+      "brand": "Bank of India",
+      "packages": [
+        "com.boi.ua.android"
+      ],
+      "prefixes": [
+        "com.boi."
+      ]
+    },
+    {
+      "keyword": "phonepe",
+      "brand": "PhonePe",
+      "packages": [
+        "com.phonepe.app"
+      ],
+      "prefixes": [
+        "com.phonepe."
+      ]
+    },
+    {
+      "keyword": "google pay",
+      "brand": "Google Pay",
+      "packages": [
+        "com.google.android.apps.nbu.paisa.user"
+      ],
+      "prefixes": [
+        "com.google."
+      ]
+    },
+    {
+      "keyword": "gpay",
+      "brand": "Google Pay",
+      "packages": [
+        "com.google.android.apps.nbu.paisa.user"
+      ],
+      "prefixes": [
+        "com.google."
+      ]
+    },
+    {
+      "keyword": "paytm",
+      "brand": "Paytm",
+      "packages": [
+        "net.one97.paytm",
+        "com.paytmmoney",
+        "com.paytm.business"
+      ],
+      "prefixes": [
+        "net.one97.",
+        "com.paytm"
+      ]
+    },
+    {
+      "keyword": "bhim",
+      "brand": "BHIM (NPCI)",
+      "packages": [
+        "in.org.npci.upiapp"
+      ],
+      "prefixes": [
+        "in.org.npci."
+      ]
+    },
+    {
+      "keyword": "npci",
+      "brand": "NPCI",
+      "packages": [
+        "in.org.npci.upiapp"
+      ],
+      "prefixes": [
+        "in.org.npci."
+      ]
+    },
+    {
+      "keyword": "mobikwik",
+      "brand": "MobiKwik",
+      "packages": [
+        "com.mobikwik_new"
+      ],
+      "prefixes": [
+        "com.mobikwik"
+      ]
+    },
+    {
+      "keyword": "freecharge",
+      "brand": "Freecharge",
+      "packages": [
+        "com.freecharge.android"
+      ],
+      "prefixes": [
+        "com.freecharge."
+      ]
+    },
+    {
+      "keyword": "cred",
+      "brand": "CRED",
+      "packages": [
+        "com.dreamplug.androidapp"
+      ],
+      "prefixes": [
+        "com.dreamplug."
+      ]
+    },
+    {
+      "keyword": "navi",
+      "brand": "Navi",
+      "packages": [
+        "com.naviapp"
+      ],
+      "prefixes": [
+        "com.navi"
+      ]
+    },
+    {
+      "keyword": "kreditbee",
+      "brand": "KreditBee",
+      "packages": [
+        "com.kreditbee.android"
+      ],
+      "prefixes": [
+        "com.kreditbee."
+      ]
+    },
+    {
+      "keyword": "moneyview",
+      "brand": "MoneyView",
+      "packages": [
+        "com.whizdm.moneyview.loans"
+      ],
+      "prefixes": [
+        "com.whizdm."
+      ]
+    },
+    {
+      "keyword": "money view",
+      "brand": "MoneyView",
+      "packages": [
+        "com.whizdm.moneyview.loans"
+      ],
+      "prefixes": [
+        "com.whizdm."
+      ]
+    },
+    {
+      "keyword": "bajaj",
+      "brand": "Bajaj Finserv",
+      "packages": [
+        "org.altruist.BajajExperia"
+      ],
+      "prefixes": [
+        "org.altruist.",
+        "com.bajaj"
+      ]
+    },
+    {
+      "keyword": "airtel",
+      "brand": "Airtel",
+      "packages": [
+        "com.myairtelapp"
+      ],
+      "prefixes": [
+        "com.airtel.",
+        "com.myairtel"
+      ]
+    },
+    {
+      "keyword": "jio",
+      "brand": "Jio",
+      "packages": [
+        "com.jio.myjio"
+      ],
+      "prefixes": [
+        "com.jio.",
+        "com.reliance"
+      ]
+    },
+    {
+      "keyword": "rbi",
+      "brand": "Reserve Bank of India",
+      "packages": [],
+      "prefixes": [
+        "in.gov.rbi",
+        "com.rbi."
+      ]
+    },
+    {
+      "keyword": "income tax",
+      "brand": "Income Tax Department",
+      "packages": [
+        "com.incometax.aisapp"
+      ],
+      "prefixes": [
+        "in.gov.",
+        "com.incometax."
+      ]
+    },
+    {
+      "keyword": "aadhaar",
+      "brand": "UIDAI",
+      "packages": [
+        "in.gov.uidai.mAadhaarPlus"
+      ],
+      "prefixes": [
+        "in.gov.uidai"
+      ]
+    },
+    {
+      "keyword": "aadhar",
+      "brand": "UIDAI",
+      "packages": [
+        "in.gov.uidai.mAadhaarPlus"
+      ],
+      "prefixes": [
+        "in.gov.uidai"
+      ]
+    },
+    {
+      "keyword": "irctc",
+      "brand": "IRCTC",
+      "packages": [
+        "cris.org.in.prs.ima"
+      ],
+      "prefixes": [
+        "cris.org.in"
+      ]
+    },
+    {
+      "keyword": "epfo",
+      "brand": "EPFO",
+      "packages": [
+        "com.nic.umang"
+      ],
+      "prefixes": [
+        "com.nic.",
+        "in.gov."
+      ]
+    },
+    {
+      "keyword": "umang",
+      "brand": "UMANG (Government of India)",
+      "packages": [
+        "com.nic.umang"
+      ],
+      "prefixes": [
+        "com.nic."
+      ]
+    },
+    {
+      "keyword": "digilocker",
+      "brand": "DigiLocker",
+      "packages": [
+        "com.digilocker.android"
+      ],
+      "prefixes": [
+        "com.digilocker."
+      ]
+    },
+    {
+      "keyword": "customs",
+      "brand": "Indian Customs",
+      "packages": [],
+      "prefixes": [
+        "in.gov."
+      ]
+    },
+    {
+      "keyword": "police",
+      "brand": "Police",
+      "packages": [],
+      "prefixes": [
+        "in.gov.",
+        "gov.in."
+      ]
+    },
+    {
+      "keyword": "flipkart",
+      "brand": "Flipkart",
+      "packages": [
+        "com.flipkart.android"
+      ],
+      "prefixes": [
+        "com.flipkart."
+      ]
+    },
+    {
+      "keyword": "amazon",
+      "brand": "Amazon",
+      "packages": [
+        "in.amazon.mShop.android.shopping"
+      ],
+      "prefixes": [
+        "in.amazon.",
+        "com.amazon."
+      ]
+    },
+    {
+      "keyword": "swiggy",
+      "brand": "Swiggy",
+      "packages": [
+        "in.swiggy.android"
+      ],
+      "prefixes": [
+        "in.swiggy."
+      ]
+    },
+    {
+      "keyword": "zomato",
+      "brand": "Zomato",
+      "packages": [
+        "com.application.zomato"
+      ],
+      "prefixes": [
+        "com.zomato.",
+        "com.application.zomato"
+      ]
+    },
+    {
+      "keyword": "hotstar",
+      "brand": "Disney+ Hotstar",
+      "packages": [
+        "in.startv.hotstar"
+      ],
+      "prefixes": [
+        "in.startv."
+      ]
+    },
+    {
+      "keyword": "netflix",
+      "brand": "Netflix",
+      "packages": [
+        "com.netflix.mediaclient"
+      ],
+      "prefixes": [
+        "com.netflix."
+      ]
+    },
+    {
+      "keyword": "truecaller",
+      "brand": "Truecaller",
+      "packages": [
+        "com.truecaller"
+      ],
+      "prefixes": [
+        "com.truecaller"
+      ]
+    },
+    {
+      "keyword": "lic",
+      "brand": "LIC",
+      "packages": [],
+      "prefixes": [
+        "com.lic.",
+        "in.lic."
+      ]
+    },
+    {
+      "keyword": "policybazaar",
+      "brand": "Policybazaar",
+      "packages": [
+        "com.policybazaar"
+      ],
+      "prefixes": [
+        "com.policybazaar"
+      ]
+    },
+    {
+      "keyword": "sbi card",
+      "brand": "SBI Card",
+      "packages": [
+        "com.sbicard.mobile"
+      ],
+      "prefixes": [
+        "com.sbicard."
+      ]
+    },
+    {
+      "keyword": "kotak811",
+      "brand": "Kotak",
+      "packages": [],
+      "prefixes": [
+        "com.kotak."
+      ]
+    },
+    {
+      "keyword": "upstox",
+      "brand": "Upstox",
+      "packages": [
+        "in.upstox.pro"
+      ],
+      "prefixes": [
+        "in.upstox."
+      ]
+    },
+    {
+      "keyword": "groww",
+      "brand": "Groww",
+      "packages": [
+        "com.nextbillion.groww"
+      ],
+      "prefixes": [
+        "com.nextbillion."
+      ]
+    },
+    {
+      "keyword": "zerodha",
+      "brand": "Zerodha",
+      "packages": [
+        "com.zerodha.kite3",
+        "com.zerodha.coin"
+      ],
+      "prefixes": [
+        "com.zerodha."
+      ]
+    },
+    {
+      "keyword": "whatsapp",
+      "brand": "WhatsApp",
+      "packages": [
+        "com.whatsapp",
+        "com.whatsapp.w4b"
+      ],
+      "prefixes": [
+        "com.whatsapp"
+      ]
+    },
+    {
+      "keyword": "telegram",
+      "brand": "Telegram",
+      "packages": [
+        "org.telegram.messenger"
+      ],
+      "prefixes": [
+        "org.telegram.",
+        "org.thunderdog."
+      ]
+    },
+    {
+      "keyword": "instagram",
+      "brand": "Instagram",
+      "packages": [
+        "com.instagram.android"
+      ],
+      "prefixes": [
+        "com.instagram."
+      ]
+    },
+    {
+      "keyword": "facebook",
+      "brand": "Facebook",
+      "packages": [
+        "com.facebook.katana"
+      ],
+      "prefixes": [
+        "com.facebook."
+      ]
+    },
+    {
+      "keyword": "bsnl",
+      "brand": "BSNL",
+      "packages": [],
+      "prefixes": [
+        "in.bsnl.",
+        "com.bsnl."
+      ]
+    },
+    {
+      "keyword": "vodafone",
+      "brand": "Vi",
+      "packages": [
+        "com.mventus.selfcare.activity"
+      ],
+      "prefixes": [
+        "com.mventus."
+      ]
+    },
+    {
+      "keyword": "mparivahan",
+      "brand": "mParivahan",
+      "packages": [
+        "com.nic.mparivahan"
+      ],
+      "prefixes": [
+        "com.nic."
+      ]
+    },
+    {
+      "keyword": "cowin",
+      "brand": "CoWIN",
+      "packages": [],
+      "prefixes": [
+        "com.cowinapp",
+        "in.gov."
+      ]
+    },
+    {
+      "keyword": "pm kisan",
+      "brand": "PM-Kisan",
+      "packages": [],
+      "prefixes": [
+        "in.gov.",
+        "com.nic."
+      ]
+    },
+    {
+      "keyword": "tata capital",
+      "brand": "Tata Capital",
+      "packages": [],
+      "prefixes": [
+        "com.tatacapital.",
+        "com.tata"
+      ]
+    },
+    {
+      "keyword": "bajaj finserv",
+      "brand": "Bajaj Finserv",
+      "packages": [
+        "org.altruist.BajajExperia"
+      ],
+      "prefixes": [
+        "org.altruist.",
+        "com.bajaj"
+      ]
+    },
+    {
+      "keyword": "muthoot",
+      "brand": "Muthoot",
+      "packages": [],
+      "prefixes": [
+        "com.muthoot"
+      ]
+    },
+    {
+      "keyword": "manappuram",
+      "brand": "Manappuram",
+      "packages": [],
+      "prefixes": [
+        "com.manappuram"
+      ]
+    },
+    {
+      "keyword": "customer care",
+      "brand": "Customer care",
+      "packages": [],
+      "prefixes": []
+    }
+  ],
+  "officialApps": [
+    {
+      "package": "com.sbi.lotusintouch",
+      "name": "YONO SBI",
+      "brand": "State Bank of India",
+      "category": "bank"
+    },
+    {
+      "package": "com.sbi.SBIFreedomPlus",
+      "name": "YONO Lite SBI",
+      "brand": "State Bank of India",
+      "category": "bank"
+    },
+    {
+      "package": "com.sbicard.mobile",
+      "name": "SBI Card",
+      "brand": "SBI Card",
+      "category": "bank"
+    },
+    {
+      "package": "com.snapwork.hdfc",
+      "name": "HDFC Bank MobileBanking",
+      "brand": "HDFC Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.hdfcbank.payzapp",
+      "name": "PayZapp",
+      "brand": "HDFC Bank",
+      "category": "wallet"
+    },
+    {
+      "package": "com.csam.icici.bank.imobile",
+      "name": "iMobile Pay",
+      "brand": "ICICI Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.axis.mobile",
+      "name": "Axis Mobile",
+      "brand": "Axis Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.msf.kbank.mobile",
+      "name": "Kotak Mobile Banking",
+      "brand": "Kotak Mahindra Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.Version1",
+      "name": "PNB ONE",
+      "brand": "Punjab National Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.bankofbaroda.mconnectplus",
+      "name": "bob World",
+      "brand": "Bank of Baroda",
+      "category": "bank"
+    },
+    {
+      "package": "com.canarabank.mobility",
+      "name": "Canara ai1",
+      "brand": "Canara Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.infrasoft.uboi",
+      "name": "Vyom",
+      "brand": "Union Bank of India",
+      "category": "bank"
+    },
+    {
+      "package": "com.fss.indus",
+      "name": "IndusMobile",
+      "brand": "IndusInd Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.idfcfirstbank.optimus",
+      "name": "IDFC FIRST Bank",
+      "brand": "IDFC FIRST Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.yesbank.yesmobile",
+      "name": "YES Mobile",
+      "brand": "YES Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.boi.ua.android",
+      "name": "BOI Mobile",
+      "brand": "Bank of India",
+      "category": "bank"
+    },
+    {
+      "package": "com.phonepe.app",
+      "name": "PhonePe",
+      "brand": "PhonePe",
+      "category": "upi"
+    },
+    {
+      "package": "com.google.android.apps.nbu.paisa.user",
+      "name": "Google Pay",
+      "brand": "Google Pay",
+      "category": "upi"
+    },
+    {
+      "package": "net.one97.paytm",
+      "name": "Paytm",
+      "brand": "Paytm",
+      "category": "upi"
+    },
+    {
+      "package": "in.org.npci.upiapp",
+      "name": "BHIM",
+      "brand": "NPCI",
+      "category": "upi"
+    },
+    {
+      "package": "in.amazon.mShop.android.shopping",
+      "name": "Amazon (Amazon Pay)",
+      "brand": "Amazon",
+      "category": "upi"
+    },
+    {
+      "package": "com.mobikwik_new",
+      "name": "MobiKwik",
+      "brand": "MobiKwik",
+      "category": "wallet"
+    },
+    {
+      "package": "com.freecharge.android",
+      "name": "Freecharge",
+      "brand": "Freecharge",
+      "category": "wallet"
+    },
+    {
+      "package": "com.dreamplug.androidapp",
+      "name": "CRED",
+      "brand": "CRED",
+      "category": "wallet"
+    },
+    {
+      "package": "com.whatsapp",
+      "name": "WhatsApp (WhatsApp Pay)",
+      "brand": "WhatsApp",
+      "category": "upi"
+    },
+    {
+      "package": "com.naviapp",
+      "name": "Navi",
+      "brand": "Navi",
+      "category": "lender"
+    },
+    {
+      "package": "com.kreditbee.android",
+      "name": "KreditBee",
+      "brand": "KreditBee",
+      "category": "lender"
+    },
+    {
+      "package": "com.whizdm.moneyview.loans",
+      "name": "MoneyView",
+      "brand": "MoneyView",
+      "category": "lender"
+    },
+    {
+      "package": "com.earlysalary.android",
+      "name": "Fibe",
+      "brand": "Fibe",
+      "category": "lender"
+    },
+    {
+      "package": "co.tslc.cashe.android",
+      "name": "CASHe",
+      "brand": "CASHe",
+      "category": "lender"
+    },
+    {
+      "package": "com.mpokket.app",
+      "name": "mPokket",
+      "brand": "mPokket",
+      "category": "lender"
+    },
+    {
+      "package": "com.fastbanking",
+      "name": "Kissht",
+      "brand": "Kissht",
+      "category": "lender"
+    },
+    {
+      "package": "indwin.c3.shareapp",
+      "name": "slice",
+      "brand": "slice",
+      "category": "lender"
+    },
+    {
+      "package": "org.altruist.BajajExperia",
+      "name": "Bajaj Finserv",
+      "brand": "Bajaj Finserv",
+      "category": "lender"
+    },
+    {
+      "package": "com.paytmmoney",
+      "name": "Paytm Money",
+      "brand": "Paytm",
+      "category": "other"
+    },
+    {
+      "package": "com.nextbillion.groww",
+      "name": "Groww",
+      "brand": "Groww",
+      "category": "other"
+    },
+    {
+      "package": "com.zerodha.kite3",
+      "name": "Kite by Zerodha",
+      "brand": "Zerodha",
+      "category": "other"
+    },
+    {
+      "package": "com.myairtelapp",
+      "name": "Airtel Thanks",
+      "brand": "Airtel",
+      "category": "other"
+    },
+    {
+      "package": "com.jio.myjio",
+      "name": "MyJio",
+      "brand": "Jio",
+      "category": "other"
+    },
+    {
+      "package": "com.nic.umang",
+      "name": "UMANG",
+      "brand": "Government of India",
+      "category": "government"
+    },
+    {
+      "package": "in.gov.uidai.mAadhaarPlus",
+      "name": "mAadhaar",
+      "brand": "UIDAI",
+      "category": "government"
+    },
+    {
+      "package": "com.digilocker.android",
+      "name": "DigiLocker",
+      "brand": "Government of India",
+      "category": "government"
+    },
+    {
+      "package": "cris.org.in.prs.ima",
+      "name": "IRCTC Rail Connect",
+      "brand": "IRCTC",
+      "category": "government"
+    },
+    {
+      "package": "com.incometax.aisapp",
+      "name": "AIS for Taxpayer",
+      "brand": "Income Tax Department",
+      "category": "government"
+    },
+    {
+      "package": "com.flipkart.android",
+      "name": "Flipkart",
+      "brand": "Flipkart",
+      "category": "shopping"
+    },
+    {
+      "package": "com.myntra.android",
+      "name": "Myntra",
+      "brand": "Myntra",
+      "category": "shopping"
+    },
+    {
+      "package": "com.meesho.supply",
+      "name": "Meesho",
+      "brand": "Meesho",
+      "category": "shopping"
+    },
+    {
+      "package": "in.swiggy.android",
+      "name": "Swiggy",
+      "brand": "Swiggy",
+      "category": "other"
+    },
+    {
+      "package": "com.application.zomato",
+      "name": "Zomato",
+      "brand": "Zomato",
+      "category": "other"
+    },
+    {
+      "package": "com.olacabs.customer",
+      "name": "Ola",
+      "brand": "Ola",
+      "category": "other"
+    },
+    {
+      "package": "com.ubercab",
+      "name": "Uber",
+      "brand": "Uber",
+      "category": "other"
+    },
+    {
+      "package": "com.makemytrip",
+      "name": "MakeMyTrip",
+      "brand": "MakeMyTrip",
+      "category": "other"
+    },
+    {
+      "package": "in.redbus.android",
+      "name": "redBus",
+      "brand": "redBus",
+      "category": "other"
+    },
+    {
+      "package": "com.bt.bms",
+      "name": "BookMyShow",
+      "brand": "BookMyShow",
+      "category": "other"
+    },
+    {
+      "package": "in.startv.hotstar",
+      "name": "Disney+ Hotstar",
+      "brand": "Hotstar",
+      "category": "other"
+    },
+    {
+      "package": "com.netflix.mediaclient",
+      "name": "Netflix",
+      "brand": "Netflix",
+      "category": "other"
+    },
+    {
+      "package": "com.google.android.youtube",
+      "name": "YouTube",
+      "brand": "YouTube",
+      "category": "other"
+    },
+    {
+      "package": "com.instagram.android",
+      "name": "Instagram",
+      "brand": "Instagram",
+      "category": "other"
+    },
+    {
+      "package": "com.facebook.katana",
+      "name": "Facebook",
+      "brand": "Facebook",
+      "category": "other"
+    },
+    {
+      "package": "org.telegram.messenger",
+      "name": "Telegram",
+      "brand": "Telegram",
+      "category": "other"
+    },
+    {
+      "package": "com.truecaller",
+      "name": "Truecaller",
+      "brand": "Truecaller",
+      "category": "other"
+    },
+    {
+      "package": "com.linkedin.android",
+      "name": "LinkedIn",
+      "brand": "LinkedIn",
+      "category": "other"
+    },
+    {
+      "package": "com.android.chrome",
+      "name": "Google Chrome",
+      "brand": "Google",
+      "category": "other"
+    },
+    {
+      "package": "com.mventus.selfcare.activity",
+      "name": "Vi App",
+      "brand": "Vi",
+      "category": "other"
+    },
+    {
+      "package": "in.upstox.pro",
+      "name": "Upstox",
+      "brand": "Upstox",
+      "category": "other"
+    },
+    {
+      "package": "com.msf.angelmobile",
+      "name": "Angel One",
+      "brand": "Angel One",
+      "category": "other"
+    },
+    {
+      "package": "com.zerodha.coin",
+      "name": "Coin by Zerodha",
+      "brand": "Zerodha",
+      "category": "other"
+    },
+    {
+      "package": "com.policybazaar",
+      "name": "Policybazaar",
+      "brand": "Policybazaar",
+      "category": "other"
+    },
+    {
+      "package": "com.moneytap",
+      "name": "MoneyTap",
+      "brand": "MoneyTap",
+      "category": "lender"
+    },
+    {
+      "package": "com.stashfin.android",
+      "name": "StashFin",
+      "brand": "StashFin",
+      "category": "lender"
+    },
+    {
+      "package": "com.paisabazaar",
+      "name": "Paisabazaar",
+      "brand": "Paisabazaar",
+      "category": "lender"
+    },
+    {
+      "package": "com.rblbank.mobank",
+      "name": "RBL MoBank",
+      "brand": "RBL Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.snapwork.IDBI",
+      "name": "IDBI GO Mobile+",
+      "brand": "IDBI Bank",
+      "category": "bank"
+    },
+    {
+      "package": "com.infrasofttech.centralbank",
+      "name": "Cent Mobile",
+      "brand": "Central Bank of India",
+      "category": "bank"
+    },
+    {
+      "package": "com.nic.mparivahan",
+      "name": "mParivahan",
+      "brand": "Government of India",
+      "category": "government"
+    },
+    {
+      "package": "nic.goi.aarogyasetu",
+      "name": "Aarogya Setu",
+      "brand": "Government of India",
+      "category": "government"
+    },
+    {
+      "package": "com.cev.mpassportseva",
+      "name": "mPassport Seva",
+      "brand": "Government of India",
+      "category": "government"
+    }
+  ],
+  "loanApps": [
+    {
+      "package": "com.naviapp",
+      "name": "Navi",
+      "lender": "Navi Finserv Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "com.kreditbee.android",
+      "name": "KreditBee",
+      "lender": "KrazyBee Services Pvt Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "com.whizdm.moneyview.loans",
+      "name": "MoneyView",
+      "lender": "Whizdm Finance Pvt Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "com.earlysalary.android",
+      "name": "Fibe (EarlySalary)",
+      "lender": "EarlySalary Services Pvt Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "co.tslc.cashe.android",
+      "name": "CASHe",
+      "lender": "Bhanix Finance and Investment Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "com.mpokket.app",
+      "name": "mPokket",
+      "lender": "Maybright Ventures Pvt Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "com.fastbanking",
+      "name": "Kissht",
+      "lender": "Si Creva Capital Services Pvt Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "indwin.c3.shareapp",
+      "name": "slice",
+      "lender": "Slice Small Finance Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "org.altruist.BajajExperia",
+      "name": "Bajaj Finserv",
+      "lender": "Bajaj Finance Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "net.one97.paytm",
+      "name": "Paytm (Postpaid / Personal Loan)",
+      "lender": "Partner banks and NBFCs",
+      "regulator": "Bank / NBFC partners"
+    },
+    {
+      "package": "com.dreamplug.androidapp",
+      "name": "CRED (CRED Cash)",
+      "lender": "Partner NBFCs",
+      "regulator": "NBFC partners"
+    },
+    {
+      "package": "com.sbi.lotusintouch",
+      "name": "YONO SBI",
+      "lender": "State Bank of India",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.snapwork.hdfc",
+      "name": "HDFC Bank",
+      "lender": "HDFC Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.csam.icici.bank.imobile",
+      "name": "iMobile Pay",
+      "lender": "ICICI Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.axis.mobile",
+      "name": "Axis Mobile",
+      "lender": "Axis Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.msf.kbank.mobile",
+      "name": "Kotak",
+      "lender": "Kotak Mahindra Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.idfcfirstbank.optimus",
+      "name": "IDFC FIRST Bank",
+      "lender": "IDFC FIRST Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.fss.indus",
+      "name": "IndusMobile",
+      "lender": "IndusInd Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.moneytap",
+      "name": "MoneyTap",
+      "lender": "Partner banks and NBFCs",
+      "regulator": "Bank / NBFC partners"
+    },
+    {
+      "package": "com.stashfin.android",
+      "name": "StashFin",
+      "lender": "Akara Capital Advisors Pvt Ltd",
+      "regulator": "RBI-registered NBFC"
+    },
+    {
+      "package": "com.paisabazaar",
+      "name": "Paisabazaar",
+      "lender": "Marketplace for regulated lenders",
+      "regulator": "Marketplace"
+    },
+    {
+      "package": "com.rblbank.mobank",
+      "name": "RBL MoBank",
+      "lender": "RBL Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.snapwork.IDBI",
+      "name": "IDBI GO Mobile+",
+      "lender": "IDBI Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.infrasofttech.centralbank",
+      "name": "Cent Mobile",
+      "lender": "Central Bank of India",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.Version1",
+      "name": "PNB ONE",
+      "lender": "Punjab National Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.bankofbaroda.mconnectplus",
+      "name": "bob World",
+      "lender": "Bank of Baroda",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.canarabank.mobility",
+      "name": "Canara ai1",
+      "lender": "Canara Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.infrasoft.uboi",
+      "name": "Vyom",
+      "lender": "Union Bank of India",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.yesbank.yesmobile",
+      "name": "YES Mobile",
+      "lender": "YES Bank",
+      "regulator": "Bank"
+    },
+    {
+      "package": "com.boi.ua.android",
+      "name": "BOI Mobile",
+      "lender": "Bank of India",
+      "regulator": "Bank"
+    }
+  ],
+  "loanKeywords": [
+    "loan",
+    "loans",
+    "credit",
+    "cash",
+    "rupee",
+    "rupees",
+    "paisa",
+    "paise",
+    "lend",
+    "lending",
+    "emi",
+    "udhaar",
+    "udhar",
+    "kredit",
+    "finance",
+    "instant money",
+    "salary advance",
+    "borrow",
+    "advance cash",
+    "quick cash",
+    "cash now",
+    "money now",
+    "easy cash",
+    "flash cash",
+    "rupeeplus",
+    "cashbean",
+    "moneytree",
+    "kissan loan",
+    "personal loan"
+  ],
+  "upiHandles": [
+    "ybl",
+    "ibl",
+    "axl",
+    "okaxis",
+    "okhdfcbank",
+    "okicici",
+    "oksbi",
+    "paytm",
+    "ptyes",
+    "ptaxis",
+    "pthdfc",
+    "ptsbi",
+    "upi",
+    "apl",
+    "yapl",
+    "ikwik",
+    "freecharge",
+    "axisb",
+    "sbi",
+    "hdfcbank",
+    "icici",
+    "kotak",
+    "indus",
+    "idfcbank",
+    "yesbank",
+    "pnb",
+    "barodampay",
+    "cnrb",
+    "unionbank",
+    "boi",
+    "naviaxis",
+    "fam",
+    "jio",
+    "airtel",
+    "waaxis",
+    "wahdfcbank",
+    "waicici",
+    "wasbi",
+    "slice",
+    "superyes",
+    "kmbl",
+    "dbs",
+    "citi",
+    "hsbc",
+    "rbl",
+    "federal",
+    "fbl",
+    "aubank",
+    "ubi",
+    "uboi",
+    "cbin",
+    "centralbank",
+    "indianbank",
+    "iob",
+    "mahb",
+    "psb",
+    "uco",
+    "jkb",
+    "kbl",
+    "kvb",
+    "sib",
+    "tmb",
+    "csbpay",
+    "dlb",
+    "nsdl",
+    "equitas",
+    "utkarshbank",
+    "jupiteraxis",
+    "timecosmos",
+    "abfspay",
+    "goaxb",
+    "bharatpe",
+    "rapl",
+    "seyes",
+    "sliceaxis",
+    "oksbi"
+  ],
+  "radar": [
+    {
+      "id": "screenshot-ocr",
+      "title": "Screenshot check is here",
+      "body": "Share any screenshot of a message to Jemixo Safe. The text is read on the phone and checked for scam patterns, in English and Hindi.",
+      "date": "2026-09-29"
+    },
+    {
+      "id": "digital-arrest",
+      "title": "\"Digital arrest\" video calls",
+      "body": "Callers posing as police, CBI or customs claim a parcel in your name has drugs and keep you on a video call while you transfer money. No agency arrests anyone over a call. Hang up and dial 1930.",
+      "date": "2026-09-29"
+    },
+    {
+      "id": "fake-loan-apps",
+      "title": "Instant loan apps that harass",
+      "body": "Apps outside the Play Store lend small amounts, then use your contacts and photos to threaten you. Only borrow through apps run by RBI-regulated lenders, and never install a loan APK from a link.",
+      "date": "2026-09-29"
+    },
+    {
+      "id": "upi-collect",
+      "title": "\"Refund\" UPI requests",
+      "body": "A stranger sends a UPI collect request or QR saying it is a refund or a prize. Approving it sends your money out. You never need to enter a PIN to receive money.",
+      "date": "2026-09-29"
+    },
+    {
+      "id": "bijli-bill",
+      "title": "Electricity bill disconnection SMS",
+      "body": "Messages from a 10-digit number say your power will be cut tonight and ask you to call an \"officer\". Real utility SMS come from a registered sender ID, never a personal number.",
+      "date": "2026-09-29"
+    },
+    {
+      "id": "fake-trading-groups",
+      "title": "WhatsApp / Telegram \"trading tips\" groups",
+      "body": "Groups with fake screenshots of profits push an app or link to invest. The dashboard shows gains, but withdrawals never work. SEBI-registered brokers never onboard through chat groups.",
+      "date": "2026-09-30"
+    },
+    {
+      "id": "apk-in-whatsapp",
+      "title": "APK files sent on WhatsApp",
+      "body": "\"Wedding invitation\", \"traffic challan\" or \"bank update\" APKs read your SMS and drain accounts. Never install an APK from a chat; share it to Jemixo Safe first.",
+      "date": "2026-09-30"
+    }
+  ],
+  "helplines": [
+    {
+      "name": "National Cyber Crime Helpline",
+      "number": "1930",
+      "kind": "cyber",
+      "note": "Report within the first hour to freeze the money"
+    },
+    {
+      "name": "Cyber crime reporting portal",
+      "url": "https://cybercrime.gov.in",
+      "kind": "cyber"
+    },
+    {
+      "name": "Sanchar Saathi (report fraud calls / SMS)",
+      "url": "https://sancharsaathi.gov.in",
+      "kind": "telecom"
+    },
+    {
+      "name": "RBI Sachet (report unauthorised lenders)",
+      "url": "https://sachet.rbi.org.in",
+      "kind": "rbi"
+    },
+    {
+      "name": "State Bank of India",
+      "number": "1800 1234",
+      "kind": "bank"
+    },
+    {
+      "name": "HDFC Bank",
+      "number": "1800 1600",
+      "kind": "bank"
+    },
+    {
+      "name": "ICICI Bank",
+      "number": "1800 1080",
+      "kind": "bank"
+    },
+    {
+      "name": "Axis Bank",
+      "number": "1860 419 5555",
+      "kind": "bank"
+    },
+    {
+      "name": "Kotak Mahindra Bank",
+      "number": "1860 266 2666",
+      "kind": "bank"
+    },
+    {
+      "name": "Punjab National Bank",
+      "number": "1800 1800",
+      "kind": "bank"
+    },
+    {
+      "name": "Bank of Baroda",
+      "number": "1800 5700",
+      "kind": "bank"
+    },
+    {
+      "name": "Canara Bank",
+      "number": "1800 1030",
+      "kind": "bank"
+    },
+    {
+      "name": "Union Bank of India",
+      "number": "1800 22 2244",
+      "kind": "bank"
+    },
+    {
+      "name": "Bank of India",
+      "number": "1800 103 1906",
+      "kind": "bank"
+    },
+    {
+      "name": "PhonePe",
+      "number": "080 6872 7374",
+      "kind": "upi"
+    },
+    {
+      "name": "Paytm",
+      "number": "0120 4456 456",
+      "kind": "upi"
+    },
+    {
+      "name": "Google Pay",
+      "number": "1800 419 0157",
+      "kind": "upi"
+    },
+    {
+      "name": "NPCI (UPI complaints)",
+      "url": "https://www.npci.org.in/what-we-do/upi/dispute-redressal-mechanism",
+      "kind": "upi"
+    },
+    {
+      "name": "IDFC FIRST Bank",
+      "number": "1800 10 888",
+      "kind": "bank"
+    },
+    {
+      "name": "IndusInd Bank",
+      "number": "1860 267 7777",
+      "kind": "bank"
+    },
+    {
+      "name": "YES Bank",
+      "number": "1800 1200",
+      "kind": "bank"
+    },
+    {
+      "name": "Federal Bank",
+      "number": "1800 425 1199",
+      "kind": "bank"
+    },
+    {
+      "name": "IDBI Bank",
+      "number": "1800 209 4324",
+      "kind": "bank"
+    },
+    {
+      "name": "Central Bank of India",
+      "number": "1800 22 1911",
+      "kind": "bank"
+    },
+    {
+      "name": "Indian Bank",
+      "number": "1800 425 00000",
+      "kind": "bank"
+    },
+    {
+      "name": "Indian Overseas Bank",
+      "number": "1800 425 4445",
+      "kind": "bank"
+    },
+    {
+      "name": "Bank of Maharashtra",
+      "number": "1800 233 4526",
+      "kind": "bank"
+    },
+    {
+      "name": "UCO Bank",
+      "number": "1800 103 0123",
+      "kind": "bank"
+    },
+    {
+      "name": "AU Small Finance Bank",
+      "number": "1800 1200 1200",
+      "kind": "bank"
+    },
+    {
+      "name": "Bandhan Bank",
+      "number": "1800 258 8181",
+      "kind": "bank"
+    },
+    {
+      "name": "RBL Bank",
+      "number": "022 6115 6300",
+      "kind": "bank"
+    },
+    {
+      "name": "Kotak 811 / fraud",
+      "number": "1800 209 0000",
+      "kind": "bank"
+    },
+    {
+      "name": "RBI complaint (CMS)",
+      "url": "https://cms.rbi.org.in",
+      "kind": "rbi"
+    },
+    {
+      "name": "Chakshu: report suspected fraud SMS/calls",
+      "url": "https://sancharsaathi.gov.in/sfc/",
+      "kind": "telecom"
+    }
+  ],
+  "officialDomains": [
+    {
+      "domain": "sbi.co.in",
+      "name": "State Bank of India"
+    },
+    {
+      "domain": "onlinesbi.sbi",
+      "name": "SBI net banking"
+    },
+    {
+      "domain": "yonobusiness.sbi",
+      "name": "SBI YONO"
+    },
+    {
+      "domain": "hdfcbank.com",
+      "name": "HDFC Bank"
+    },
+    {
+      "domain": "icicibank.com",
+      "name": "ICICI Bank"
+    },
+    {
+      "domain": "axisbank.com",
+      "name": "Axis Bank"
+    },
+    {
+      "domain": "kotak.com",
+      "name": "Kotak Mahindra Bank"
+    },
+    {
+      "domain": "pnbindia.in",
+      "name": "Punjab National Bank"
+    },
+    {
+      "domain": "bankofbaroda.in",
+      "name": "Bank of Baroda"
+    },
+    {
+      "domain": "canarabank.com",
+      "name": "Canara Bank"
+    },
+    {
+      "domain": "unionbankofindia.co.in",
+      "name": "Union Bank of India"
+    },
+    {
+      "domain": "indusind.com",
+      "name": "IndusInd Bank"
+    },
+    {
+      "domain": "idfcfirstbank.com",
+      "name": "IDFC FIRST Bank"
+    },
+    {
+      "domain": "yesbank.in",
+      "name": "YES Bank"
+    },
+    {
+      "domain": "bankofindia.co.in",
+      "name": "Bank of India"
+    },
+    {
+      "domain": "phonepe.com",
+      "name": "PhonePe"
+    },
+    {
+      "domain": "paytm.com",
+      "name": "Paytm"
+    },
+    {
+      "domain": "pay.google.com",
+      "name": "Google Pay"
+    },
+    {
+      "domain": "npci.org.in",
+      "name": "NPCI"
+    },
+    {
+      "domain": "bhimupi.org.in",
+      "name": "BHIM UPI"
+    },
+    {
+      "domain": "rbi.org.in",
+      "name": "Reserve Bank of India"
+    },
+    {
+      "domain": "sachet.rbi.org.in",
+      "name": "RBI Sachet"
+    },
+    {
+      "domain": "incometax.gov.in",
+      "name": "Income Tax Department"
+    },
+    {
+      "domain": "uidai.gov.in",
+      "name": "UIDAI (Aadhaar)"
+    },
+    {
+      "domain": "epfindia.gov.in",
+      "name": "EPFO"
+    },
+    {
+      "domain": "parivahan.gov.in",
+      "name": "Parivahan (RTO)"
+    },
+    {
+      "domain": "echallan.parivahan.gov.in",
+      "name": "e-Challan"
+    },
+    {
+      "domain": "irctc.co.in",
+      "name": "IRCTC"
+    },
+    {
+      "domain": "indiapost.gov.in",
+      "name": "India Post"
+    },
+    {
+      "domain": "cybercrime.gov.in",
+      "name": "National Cyber Crime Portal"
+    },
+    {
+      "domain": "sancharsaathi.gov.in",
+      "name": "Sanchar Saathi"
+    },
+    {
+      "domain": "digilocker.gov.in",
+      "name": "DigiLocker"
+    },
+    {
+      "domain": "umang.gov.in",
+      "name": "UMANG"
+    },
+    {
+      "domain": "nsdl.co.in",
+      "name": "NSDL"
+    },
+    {
+      "domain": "sebi.gov.in",
+      "name": "SEBI"
+    },
+    {
+      "domain": "amazon.in",
+      "name": "Amazon India"
+    },
+    {
+      "domain": "flipkart.com",
+      "name": "Flipkart"
+    },
+    {
+      "domain": "airtel.in",
+      "name": "Airtel"
+    },
+    {
+      "domain": "jio.com",
+      "name": "Jio"
+    },
+    {
+      "domain": "bluedart.com",
+      "name": "Blue Dart"
+    },
+    {
+      "domain": "fedex.com",
+      "name": "FedEx"
+    },
+    {
+      "domain": "dhl.com",
+      "name": "DHL"
+    },
+    {
+      "domain": "delhivery.com",
+      "name": "Delhivery"
+    },
+    {
+      "domain": "google.com",
+      "name": "Google"
+    },
+    {
+      "domain": "whatsapp.com",
+      "name": "WhatsApp"
+    },
+    {
+      "domain": "microsoft.com",
+      "name": "Microsoft"
+    },
+    {
+      "domain": "apple.com",
+      "name": "Apple"
+    },
+    {
+      "domain": "gov.in",
+      "name": "Government of India / state government (.gov.in)"
+    },
+    {
+      "domain": "nic.in",
+      "name": "National Informatics Centre (.nic.in)"
+    },
+    {
+      "domain": "india.gov.in",
+      "name": "National Portal of India"
+    },
+    {
+      "domain": "mygov.in",
+      "name": "MyGov"
+    },
+    {
+      "domain": "gst.gov.in",
+      "name": "GST portal"
+    },
+    {
+      "domain": "trai.gov.in",
+      "name": "TRAI"
+    },
+    {
+      "domain": "irdai.gov.in",
+      "name": "IRDAI"
+    },
+    {
+      "domain": "cowin.gov.in",
+      "name": "CoWIN"
+    },
+    {
+      "domain": "passportindia.gov.in",
+      "name": "Passport Seva"
+    },
+    {
+      "domain": "pmkisan.gov.in",
+      "name": "PM-Kisan"
+    },
+    {
+      "domain": "cms.rbi.org.in",
+      "name": "RBI complaint management"
+    },
+    {
+      "domain": "cdslindia.com",
+      "name": "CDSL"
+    },
+    {
+      "domain": "bseindia.com",
+      "name": "BSE"
+    },
+    {
+      "domain": "nseindia.com",
+      "name": "NSE"
+    },
+    {
+      "domain": "amfiindia.com",
+      "name": "AMFI"
+    },
+    {
+      "domain": "centralbankofindia.co.in",
+      "name": "Central Bank of India"
+    },
+    {
+      "domain": "indianbank.in",
+      "name": "Indian Bank"
+    },
+    {
+      "domain": "iob.in",
+      "name": "Indian Overseas Bank"
+    },
+    {
+      "domain": "bankofmaharashtra.in",
+      "name": "Bank of Maharashtra"
+    },
+    {
+      "domain": "psbindia.com",
+      "name": "Punjab & Sind Bank"
+    },
+    {
+      "domain": "ucobank.com",
+      "name": "UCO Bank"
+    },
+    {
+      "domain": "idbibank.in",
+      "name": "IDBI Bank"
+    },
+    {
+      "domain": "federalbank.co.in",
+      "name": "Federal Bank"
+    },
+    {
+      "domain": "southindianbank.com",
+      "name": "South Indian Bank"
+    },
+    {
+      "domain": "kvb.co.in",
+      "name": "Karur Vysya Bank"
+    },
+    {
+      "domain": "rblbank.com",
+      "name": "RBL Bank"
+    },
+    {
+      "domain": "bandhanbank.com",
+      "name": "Bandhan Bank"
+    },
+    {
+      "domain": "aubank.in",
+      "name": "AU Small Finance Bank"
+    },
+    {
+      "domain": "dcbbank.com",
+      "name": "DCB Bank"
+    },
+    {
+      "domain": "csb.co.in",
+      "name": "CSB Bank"
+    },
+    {
+      "domain": "dhanbank.com",
+      "name": "Dhanlaxmi Bank"
+    },
+    {
+      "domain": "jkbank.com",
+      "name": "J&K Bank"
+    },
+    {
+      "domain": "karnatakabank.com",
+      "name": "Karnataka Bank"
+    },
+    {
+      "domain": "tmb.in",
+      "name": "Tamilnad Mercantile Bank"
+    },
+    {
+      "domain": "cityunionbank.com",
+      "name": "City Union Bank"
+    },
+    {
+      "domain": "equitasbank.com",
+      "name": "Equitas Small Finance Bank"
+    },
+    {
+      "domain": "ujjivansfb.in",
+      "name": "Ujjivan Small Finance Bank"
+    },
+    {
+      "domain": "esafbank.com",
+      "name": "ESAF Small Finance Bank"
+    },
+    {
+      "domain": "janabank.com",
+      "name": "Jana Small Finance Bank"
+    },
+    {
+      "domain": "utkarsh.bank",
+      "name": "Utkarsh Small Finance Bank"
+    },
+    {
+      "domain": "suryodaybank.com",
+      "name": "Suryoday Small Finance Bank"
+    },
+    {
+      "domain": "capitalbank.co.in",
+      "name": "Capital Small Finance Bank"
+    },
+    {
+      "domain": "shivalikbank.com",
+      "name": "Shivalik Small Finance Bank"
+    },
+    {
+      "domain": "unitybank.co.in",
+      "name": "Unity Small Finance Bank"
+    },
+    {
+      "domain": "northeastsmallfinancebank.com",
+      "name": "North East Small Finance Bank"
+    },
+    {
+      "domain": "paytmbank.com",
+      "name": "Paytm Payments Bank"
+    },
+    {
+      "domain": "ippbonline.com",
+      "name": "India Post Payments Bank"
+    },
+    {
+      "domain": "finobank.com",
+      "name": "Fino Payments Bank"
+    },
+    {
+      "domain": "jiopaymentsbank.com",
+      "name": "Jio Payments Bank"
+    },
+    {
+      "domain": "sc.com",
+      "name": "Standard Chartered"
+    },
+    {
+      "domain": "hsbc.co.in",
+      "name": "HSBC India"
+    },
+    {
+      "domain": "dbs.com",
+      "name": "DBS Bank"
+    },
+    {
+      "domain": "deutschebank.co.in",
+      "name": "Deutsche Bank India"
+    },
+    {
+      "domain": "sbicard.com",
+      "name": "SBI Card"
+    },
+    {
+      "domain": "bajajfinserv.in",
+      "name": "Bajaj Finserv"
+    },
+    {
+      "domain": "hdbfs.com",
+      "name": "HDB Financial Services"
+    },
+    {
+      "domain": "tatacapital.com",
+      "name": "Tata Capital"
+    },
+    {
+      "domain": "adityabirlacapital.com",
+      "name": "Aditya Birla Capital"
+    },
+    {
+      "domain": "ltfs.com",
+      "name": "L&T Finance"
+    },
+    {
+      "domain": "muthootfinance.com",
+      "name": "Muthoot Finance"
+    },
+    {
+      "domain": "manappuram.com",
+      "name": "Manappuram Finance"
+    },
+    {
+      "domain": "mahindrafinance.com",
+      "name": "Mahindra Finance"
+    },
+    {
+      "domain": "shriramfinance.in",
+      "name": "Shriram Finance"
+    },
+    {
+      "domain": "cholamandalam.com",
+      "name": "Cholamandalam Finance"
+    },
+    {
+      "domain": "homecredit.co.in",
+      "name": "Home Credit India"
+    },
+    {
+      "domain": "iifl.com",
+      "name": "IIFL Finance"
+    },
+    {
+      "domain": "piramalfinance.com",
+      "name": "Piramal Finance"
+    },
+    {
+      "domain": "poonawallafincorp.com",
+      "name": "Poonawalla Fincorp"
+    },
+    {
+      "domain": "kreditbee.in",
+      "name": "KreditBee"
+    },
+    {
+      "domain": "moneyview.in",
+      "name": "MoneyView"
+    },
+    {
+      "domain": "navi.com",
+      "name": "Navi"
+    },
+    {
+      "domain": "fibe.in",
+      "name": "Fibe"
+    },
+    {
+      "domain": "cashe.co.in",
+      "name": "CASHe"
+    },
+    {
+      "domain": "mpokket.in",
+      "name": "mPokket"
+    },
+    {
+      "domain": "kissht.com",
+      "name": "Kissht"
+    },
+    {
+      "domain": "sliceit.com",
+      "name": "slice"
+    },
+    {
+      "domain": "lazypay.in",
+      "name": "LazyPay"
+    },
+    {
+      "domain": "moneytap.com",
+      "name": "MoneyTap"
+    },
+    {
+      "domain": "stashfin.com",
+      "name": "StashFin"
+    },
+    {
+      "domain": "paisabazaar.com",
+      "name": "Paisabazaar"
+    },
+    {
+      "domain": "lendingkart.com",
+      "name": "Lendingkart"
+    },
+    {
+      "domain": "licindia.in",
+      "name": "LIC"
+    },
+    {
+      "domain": "sbilife.co.in",
+      "name": "SBI Life"
+    },
+    {
+      "domain": "hdfclife.com",
+      "name": "HDFC Life"
+    },
+    {
+      "domain": "iciciprulife.com",
+      "name": "ICICI Prudential Life"
+    },
+    {
+      "domain": "maxlifeinsurance.com",
+      "name": "Max Life"
+    },
+    {
+      "domain": "bajajallianz.com",
+      "name": "Bajaj Allianz"
+    },
+    {
+      "domain": "tataaig.com",
+      "name": "Tata AIG"
+    },
+    {
+      "domain": "starhealth.in",
+      "name": "Star Health"
+    },
+    {
+      "domain": "nivabupa.com",
+      "name": "Niva Bupa"
+    },
+    {
+      "domain": "newindia.co.in",
+      "name": "New India Assurance"
+    },
+    {
+      "domain": "uiic.co.in",
+      "name": "United India Insurance"
+    },
+    {
+      "domain": "orientalinsurance.org.in",
+      "name": "Oriental Insurance"
+    },
+    {
+      "domain": "policybazaar.com",
+      "name": "Policybazaar"
+    },
+    {
+      "domain": "mobikwik.com",
+      "name": "MobiKwik"
+    },
+    {
+      "domain": "freecharge.in",
+      "name": "Freecharge"
+    },
+    {
+      "domain": "cred.club",
+      "name": "CRED"
+    },
+    {
+      "domain": "bharatpe.com",
+      "name": "BharatPe"
+    },
+    {
+      "domain": "pinelabs.com",
+      "name": "Pine Labs"
+    },
+    {
+      "domain": "razorpay.com",
+      "name": "Razorpay"
+    },
+    {
+      "domain": "payu.in",
+      "name": "PayU"
+    },
+    {
+      "domain": "ccavenue.com",
+      "name": "CCAvenue"
+    },
+    {
+      "domain": "billdesk.com",
+      "name": "BillDesk"
+    },
+    {
+      "domain": "cashfree.com",
+      "name": "Cashfree"
+    },
+    {
+      "domain": "zerodha.com",
+      "name": "Zerodha"
+    },
+    {
+      "domain": "groww.in",
+      "name": "Groww"
+    },
+    {
+      "domain": "upstox.com",
+      "name": "Upstox"
+    },
+    {
+      "domain": "angelone.in",
+      "name": "Angel One"
+    },
+    {
+      "domain": "paytmmoney.com",
+      "name": "Paytm Money"
+    },
+    {
+      "domain": "kuvera.in",
+      "name": "Kuvera"
+    },
+    {
+      "domain": "etmoney.com",
+      "name": "ET Money"
+    },
+    {
+      "domain": "indmoney.com",
+      "name": "INDmoney"
+    },
+    {
+      "domain": "mfcentral.com",
+      "name": "MF Central"
+    },
+    {
+      "domain": "camsonline.com",
+      "name": "CAMS"
+    },
+    {
+      "domain": "kfintech.com",
+      "name": "KFintech"
+    },
+    {
+      "domain": "myvi.in",
+      "name": "Vi"
+    },
+    {
+      "domain": "vi.in",
+      "name": "Vi"
+    },
+    {
+      "domain": "bsnl.co.in",
+      "name": "BSNL"
+    },
+    {
+      "domain": "mtnl.net.in",
+      "name": "MTNL"
+    },
+    {
+      "domain": "dtdc.in",
+      "name": "DTDC"
+    },
+    {
+      "domain": "ekartlogistics.com",
+      "name": "Ekart"
+    },
+    {
+      "domain": "ecomexpress.in",
+      "name": "Ecom Express"
+    },
+    {
+      "domain": "xpressbees.com",
+      "name": "XpressBees"
+    },
+    {
+      "domain": "gati.com",
+      "name": "Gati"
+    },
+    {
+      "domain": "aramex.com",
+      "name": "Aramex"
+    },
+    {
+      "domain": "ups.com",
+      "name": "UPS"
+    },
+    {
+      "domain": "tatapower.com",
+      "name": "Tata Power"
+    },
+    {
+      "domain": "tatapower-ddl.com",
+      "name": "Tata Power-DDL"
+    },
+    {
+      "domain": "adanielectricity.com",
+      "name": "Adani Electricity"
+    },
+    {
+      "domain": "bsesdelhi.com",
+      "name": "BSES Delhi"
+    },
+    {
+      "domain": "mahadiscom.in",
+      "name": "MSEDCL (Mahavitaran)"
+    },
+    {
+      "domain": "torrentpower.com",
+      "name": "Torrent Power"
+    },
+    {
+      "domain": "cesc.co.in",
+      "name": "CESC"
+    },
+    {
+      "domain": "uppcl.org",
+      "name": "UPPCL"
+    },
+    {
+      "domain": "kseb.in",
+      "name": "KSEB"
+    },
+    {
+      "domain": "wbsedcl.in",
+      "name": "WBSEDCL"
+    },
+    {
+      "domain": "bescom.co.in",
+      "name": "BESCOM"
+    },
+    {
+      "domain": "tsspdcl.in",
+      "name": "TSSPDCL"
+    },
+    {
+      "domain": "apspdcl.in",
+      "name": "APSPDCL"
+    },
+    {
+      "domain": "pspcl.in",
+      "name": "PSPCL"
+    },
+    {
+      "domain": "mpwz.co.in",
+      "name": "MPWZ"
+    },
+    {
+      "domain": "myntra.com",
+      "name": "Myntra"
+    },
+    {
+      "domain": "meesho.com",
+      "name": "Meesho"
+    },
+    {
+      "domain": "ajio.com",
+      "name": "AJIO"
+    },
+    {
+      "domain": "nykaa.com",
+      "name": "Nykaa"
+    },
+    {
+      "domain": "bigbasket.com",
+      "name": "BigBasket"
+    },
+    {
+      "domain": "swiggy.com",
+      "name": "Swiggy"
+    },
+    {
+      "domain": "zomato.com",
+      "name": "Zomato"
+    },
+    {
+      "domain": "olacabs.com",
+      "name": "Ola"
+    },
+    {
+      "domain": "uber.com",
+      "name": "Uber"
+    },
+    {
+      "domain": "rapido.bike",
+      "name": "Rapido"
+    },
+    {
+      "domain": "makemytrip.com",
+      "name": "MakeMyTrip"
+    },
+    {
+      "domain": "goibibo.com",
+      "name": "Goibibo"
+    },
+    {
+      "domain": "redbus.in",
+      "name": "redBus"
+    },
+    {
+      "domain": "bookmyshow.com",
+      "name": "BookMyShow"
+    },
+    {
+      "domain": "cleartrip.com",
+      "name": "Cleartrip"
+    },
+    {
+      "domain": "hotstar.com",
+      "name": "Disney+ Hotstar"
+    },
+    {
+      "domain": "netflix.com",
+      "name": "Netflix"
+    },
+    {
+      "domain": "youtube.com",
+      "name": "YouTube"
+    },
+    {
+      "domain": "spotify.com",
+      "name": "Spotify"
+    },
+    {
+      "domain": "facebook.com",
+      "name": "Facebook"
+    },
+    {
+      "domain": "instagram.com",
+      "name": "Instagram"
+    },
+    {
+      "domain": "linkedin.com",
+      "name": "LinkedIn"
+    },
+    {
+      "domain": "naukri.com",
+      "name": "Naukri"
+    },
+    {
+      "domain": "indeed.com",
+      "name": "Indeed"
+    },
+    {
+      "domain": "telegram.org",
+      "name": "Telegram"
+    },
+    {
+      "domain": "truecaller.com",
+      "name": "Truecaller"
+    },
+    {
+      "domain": "samsung.com",
+      "name": "Samsung"
+    },
+    {
+      "domain": "xiaomi.com",
+      "name": "Xiaomi"
+    },
+    {
+      "domain": "oneplus.in",
+      "name": "OnePlus"
+    }
+  ],
+  "callRules": {
+    "suspiciousCountryCodes": {
+      "92": "Pakistan",
+      "84": "Vietnam",
+      "62": "Indonesia",
+      "60": "Malaysia",
+      "63": "Philippines",
+      "254": "Kenya",
+      "234": "Nigeria",
+      "251": "Ethiopia",
+      "1": "USA / Canada",
+      "44": "United Kingdom",
+      "7": "Russia / Kazakhstan",
+      "375": "Belarus",
+      "93": "Afghanistan"
+    },
+    "note": "Indian banks, courier companies and government offices never call from foreign numbers. 140-series numbers are telemarketers; 1600-series numbers are verified service calls (TRAI)."
+  }
+}
