@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -48,14 +49,15 @@ class _CallCheckPageState extends State<CallCheckPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final s = Strings.of(context);
     final verdict = _verdict;
     final color = verdict == null
         ? theme.colorScheme.primary
         : RiskPalette.color(context, verdict.level);
 
     return AppPageScaffold(
-      title: 'Check a phone number',
-      subtitle: 'Who can really be calling from it?',
+      title: s.checkCaller,
+      subtitle: s.checkPhoneSubtitleTop,
       child: ListView(
         padding: const EdgeInsets.fromLTRB(
           AppSpacing.screen,
@@ -68,12 +70,17 @@ class _CallCheckPageState extends State<CallCheckPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Number that called or messaged', style: AppTypography.sectionTitle),
+                Text(
+                  s.isHindi ? 'कॉल या मैसेज करने वाला नंबर' : 'Number that called or messaged',
+                  style: AppTypography.sectionTitle,
+                ),
                 const SizedBox(height: 6),
                 Text(
-                  'No lookup service is used. The check applies TRAI numbering '
-                  'rules: 140 = telemarketer, 1600 = verified service call, '
-                  'foreign or personal numbers cannot be a bank, police or courier.',
+                  s.isHindi
+                      ? 'कोई बाहरी सर्वर उपयोग नहीं होता। TRAI के नियमों के अनुसार: 140 = टेलीमार्केटर, 1600 = सत्यापित सेवा कॉल, विदेशी या व्यक्तिगत नंबर बैंक, पुलिस या कूरियर नहीं हो सकते।'
+                      : 'No lookup service is used. The check applies TRAI numbering '
+                          'rules: 140 = telemarketer, 1600 = verified service call, '
+                          'foreign or personal numbers cannot be a bank, police or courier.',
                   style: AppTypography.small.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
@@ -98,14 +105,14 @@ class _CallCheckPageState extends State<CallCheckPage> {
                   child: TextButton.icon(
                     onPressed: _paste,
                     icon: const Icon(Icons.content_paste_rounded, size: 16),
-                    label: const Text('Paste'),
+                    label: Text(s.isHindi ? 'पेस्ट करें' : 'Paste'),
                   ),
                 ),
               ],
             ),
           ),
           if (verdict != null) ...[
-            const SectionHeader(title: 'Result'),
+            SectionHeader(title: s.isHindi ? 'जाँच का परिणाम' : 'Result'),
             AppCard(
               padding: const EdgeInsets.all(AppSpacing.standard),
               child: Column(

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -38,20 +39,21 @@ class _QrScannerPageState extends State<QrScannerPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final s = Strings.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('QR scanner'),
+        title: Text(s.qrScannerTitle),
         actions: [
           IconButton(
             onPressed: () => _controller.toggleTorch(),
             icon: const Icon(Icons.flash_on_rounded),
-            tooltip: 'Torch',
+            tooltip: s.isHindi ? 'टॉर्च' : 'Torch',
           ),
           IconButton(
             onPressed: () => _controller.switchCamera(),
             icon: const Icon(Icons.cameraswitch_rounded),
-            tooltip: 'Switch camera',
+            tooltip: s.isHindi ? 'कैमरा बदलें' : 'Switch camera',
           ),
         ],
       ),

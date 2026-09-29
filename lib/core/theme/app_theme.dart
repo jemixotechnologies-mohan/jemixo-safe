@@ -113,20 +113,22 @@ class AppTheme {
       onError: Colors.white,
       surface: AppColors.surface,
       onSurface: AppColors.textPrimary,
+      onSurfaceVariant: AppColors.textSecondary,
+      surfaceContainerHighest: Color(0xFFF1F5F9),
       outline: AppColors.border,
       outlineVariant: AppColors.border,
     );
 
     return _base(scheme, Brightness.light).copyWith(
       scaffoldBackgroundColor: AppColors.background,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: AppColors.background,
         surfaceTintColor: Colors.transparent,
         foregroundColor: AppColors.textPrimary,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: false,
-        titleTextStyle: AppTypography.pageTitle,
+        titleTextStyle: AppTypography.pageTitle.copyWith(color: AppColors.textPrimary),
         systemOverlayStyle: AppSystemOverlay.light,
       ),
       bottomSheetTheme: const BottomSheetThemeData(
@@ -185,20 +187,22 @@ class AppTheme {
       onError: Color(0xFF3B0A0A),
       surface: AppColors.darkSurface,
       onSurface: AppColors.darkText,
+      onSurfaceVariant: AppColors.darkTextSecondary,
+      surfaceContainerHighest: Color(0xFF13362B),
       outline: AppColors.darkBorder,
       outlineVariant: AppColors.darkBorder,
     );
 
     return _base(scheme, Brightness.dark).copyWith(
       scaffoldBackgroundColor: AppColors.darkBackground,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: AppColors.darkBackground,
         surfaceTintColor: Colors.transparent,
         foregroundColor: AppColors.darkText,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: false,
-        titleTextStyle: AppTypography.pageTitle,
+        titleTextStyle: AppTypography.pageTitle.copyWith(color: AppColors.darkText),
         systemOverlayStyle: AppSystemOverlay.dark,
       ),
       bottomSheetTheme: const BottomSheetThemeData(
@@ -244,6 +248,11 @@ class AppTheme {
   }
 
   static ThemeData _base(ColorScheme scheme, Brightness brightness) {
+    final onSurface = scheme.onSurface;
+    final onSurfaceVariant = brightness == Brightness.light
+        ? AppColors.textSecondary
+        : AppColors.darkTextSecondary;
+
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
@@ -251,16 +260,16 @@ class AppTheme {
       fontFamily: AppTypography._family,
       splashFactory: InkSparkle.splashFactory,
       textTheme: TextTheme(
-        displaySmall: AppTypography.metric,
-        headlineMedium: AppTypography.brand,
-        titleLarge: AppTypography.pageTitle,
-        titleMedium: AppTypography.sectionTitle,
-        titleSmall: AppTypography.cardTitle,
-        bodyLarge: AppTypography.body,
-        bodyMedium: AppTypography.body,
-        bodySmall: AppTypography.small,
-        labelLarge: AppTypography.smallStrong,
-        labelMedium: AppTypography.label,
+        displaySmall: AppTypography.metric.copyWith(color: onSurface),
+        headlineMedium: AppTypography.brand.copyWith(color: onSurface),
+        titleLarge: AppTypography.pageTitle.copyWith(color: onSurface),
+        titleMedium: AppTypography.sectionTitle.copyWith(color: onSurface),
+        titleSmall: AppTypography.cardTitle.copyWith(color: onSurface),
+        bodyLarge: AppTypography.body.copyWith(color: onSurface),
+        bodyMedium: AppTypography.body.copyWith(color: onSurface),
+        bodySmall: AppTypography.small.copyWith(color: onSurfaceVariant),
+        labelLarge: AppTypography.smallStrong.copyWith(color: onSurface),
+        labelMedium: AppTypography.label.copyWith(color: onSurfaceVariant),
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
@@ -268,7 +277,7 @@ class AppTheme {
           foregroundColor: Colors.white,
           disabledBackgroundColor: AppColors.borderStrong,
           disabledForegroundColor: Colors.white70,
-          minimumSize: const Size.fromHeight(54),
+          minimumSize: const Size(64, 48),
           elevation: 0,
           textStyle: const TextStyle(
             fontFamily: AppTypography._family,
@@ -284,7 +293,7 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: scheme.onSurface,
-          minimumSize: const Size.fromHeight(50),
+          minimumSize: const Size(64, 48),
           side: BorderSide(color: scheme.outline),
           textStyle: const TextStyle(
             fontFamily: AppTypography._family,

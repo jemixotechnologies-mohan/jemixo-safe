@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -55,69 +56,79 @@ class _HardwareTestsPageState extends State<HardwareTestsPage> {
   Widget build(BuildContext context) {
     final device = context.watch<DeviceService>();
     final theme = Theme.of(context);
+    final s = Strings.of(context);
 
     final tests = <HardwareTest>[
       HardwareTest(
         id: 'accelerometer',
-        title: 'Accelerometer',
-        description:
-            'Move the phone in any direction while the test runs. Values '
-            'should change and settle near gravity (about 9.8) when it is '
-            'lying flat.',
+        title: s.isHindi ? 'एक्सीलेरोमीटर' : 'Accelerometer',
+        description: s.isHindi
+            ? 'टेस्ट के दौरान फ़ोन को किसी भी दिशा में हिलाएं। मान बदलने चाहिए।'
+            : 'Move the phone in any direction while the test runs. Values '
+                'should change and settle near gravity (about 9.8) when it is '
+                'lying flat.',
         available: device.hasAccelerometer,
       ),
       HardwareTest(
         id: 'gyroscope',
-        title: 'Gyroscope',
-        description:
-            'Twist the phone slowly. Rotation readings should change '
-            'while turning and hold steady when still.',
+        title: s.isHindi ? 'जाइरोस्कोप' : 'Gyroscope',
+        description: s.isHindi
+            ? 'फ़ोन को धीरे-धीरे घुमाएँ। घुमाते समय रोटेशन मान बदलना चाहिए।'
+            : 'Twist the phone slowly. Rotation readings should change '
+                'while turning and hold steady when still.',
         available: device.hasGyroscope,
       ),
       HardwareTest(
         id: 'magnetometer',
-        title: 'Compass',
-        description:
-            'Sweep the phone around in a figure of eight. The field '
-            'strength should change as the phone turns.',
+        title: s.isHindi ? 'कंपास' : 'Compass',
+        description: s.isHindi
+            ? 'फ़ोन को आठ (8) के आकार में घुमाएँ। चुंबकीय शक्ति बदलनी चाहिए।'
+            : 'Sweep the phone around in a figure of eight. The field '
+                'strength should change as the phone turns.',
         available: device.hasCompass,
       ),
       HardwareTest(
         id: 'proximity',
-        title: 'Proximity sensor',
-        description:
-            'Cover the top of the phone with your palm during the test. '
-            'The reading should drop to "near" and return to "far".',
+        title: s.isHindi ? 'प्रॉक्सिमिटी सेंसर' : 'Proximity sensor',
+        description: s.isHindi
+            ? 'टेस्ट के दौरान फ़ोन के ऊपरी हिस्से को हथेली से ढकें। मान "पास" और "दूर" होना चाहिए।'
+            : 'Cover the top of the phone with your palm during the test. '
+                'The reading should drop to "near" and return to "far".',
         available: device.hasProximity,
       ),
       HardwareTest(
         id: 'light',
-        title: 'Light sensor',
-        description:
-            'Cover the sensor, then point the phone at a light. The lux '
-            'reading should fall and rise.',
+        title: s.isHindi ? 'लाइट सेंसर' : 'Light sensor',
+        description: s.isHindi
+            ? 'सेंसर को ढकें, फिर रोशनी की ओर करें। लक्स रीडिंग घटनी और बढ़नी चाहिए।'
+            : 'Cover the sensor, then point the phone at a light. The lux '
+                'reading should fall and rise.',
         available: device.hasLightSensor,
       ),
       HardwareTest(
         id: 'barometer',
-        title: 'Barometer',
-        description:
-            'The pressure reading should sit between 300 and 1200 hPa. Only '
-            'some phones have this sensor.',
+        title: s.isHindi ? 'बैरोमीटर' : 'Barometer',
+        description: s.isHindi
+            ? 'दबाव 300 से 1200 hPa के बीच होना चाहिए।'
+            : 'The pressure reading should sit between 300 and 1200 hPa. Only '
+                'some phones have this sensor.',
         available: device.hasBarometer,
       ),
       HardwareTest(
         id: 'flash',
-        title: 'Flashlight',
-        description: 'Toggle the torch. It should light up immediately.',
+        title: s.isHindi ? 'टॉर्च' : 'Flashlight',
+        description: s.isHindi
+            ? 'टॉर्च चालू करके देखें कि कैमरे की LED जलती है या नहीं।'
+            : 'Toggle the torch. It should light up immediately.',
         available: device.hasFlash,
       ),
     ];
 
     return AppPageScaffold(
-      title: 'Hardware tests',
-      subtitle:
-          '${tests.where((t) => t.available).length} of ${tests.length} available',
+      title: s.hardwareTestsTitle,
+      subtitle: s.isHindi
+          ? '${tests.length} में से ${tests.where((t) => t.available).length} उपलब्ध'
+          : '${tests.where((t) => t.available).length} of ${tests.length} available',
       child: ListView(
         padding: const EdgeInsets.fromLTRB(
           AppSpacing.screen,
@@ -127,10 +138,11 @@ class _HardwareTestsPageState extends State<HardwareTestsPage> {
         ),
         children: [
           InfoBanner(
-            title: 'What these tests can tell you',
-            message:
-                'They confirm a sensor is reporting plausible values. A failure '
-                'here is often a missing driver, not a broken device.',
+            title: s.isHindi ? 'ये टेस्ट क्या बताते हैं' : 'What these tests can tell you',
+            message: s.isHindi
+                ? 'ये पुष्टि करते हैं कि सेंसर सही डेटा दे रहे हैं। किसी टेस्ट का फ़ेल होना अक्सर सॉफ़्टवेयर या ड्राइवर की कमी होता है।'
+                : 'They confirm a sensor is reporting plausible values. A failure '
+                    'here is often a missing driver, not a broken device.',
             icon: Icons.build_circle_outlined,
           ),
           const SizedBox(height: AppSpacing.standard),

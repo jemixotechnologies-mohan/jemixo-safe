@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -31,16 +32,17 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     final history = context.watch<HistoryController>();
     final theme = Theme.of(context);
+    final s = Strings.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scan history'),
+        title: Text(s.historyTitle),
         actions: [
           if (history.records.isNotEmpty)
             IconButton(
               onPressed: () => _confirmClear(context),
               icon: const Icon(Icons.delete_sweep_outlined),
-              tooltip: 'Clear all',
+              tooltip: s.isHindi ? 'सभी हटाएं' : 'Clear all',
             ),
         ],
       ),
@@ -50,12 +52,13 @@ class _HistoryPageState extends State<HistoryPage> {
             ? const Center(child: CircularProgressIndicator())
             : history.records.isEmpty
             ? ListView(
-                children: const [
+                children: [
                   EmptyState(
-                    title: 'No scans yet',
-                    message:
-                        'Run a security scan and it will be recorded here so you '
-                        'can compare results over time.',
+                    title: s.isHindi ? 'अभी कोई स्कैन नहीं है' : 'No scans yet',
+                    message: s.isHindi
+                        ? 'एक सुरक्षा जाँच चलाएँ, उसका रिकॉर्ड यहाँ सुरक्षित रहेगा ताकि आप समय के साथ सुधार देख सकें।'
+                        : 'Run a security scan and it will be recorded here so you '
+                            'can compare results over time.',
                     icon: Icons.history_rounded,
                   ),
                 ],
@@ -92,7 +95,9 @@ class _HistoryPageState extends State<HistoryPage> {
               child: Padding(
                 padding: const EdgeInsets.all(AppSpacing.standard),
                 child: Text(
-                  '${history.records.length} record${history.records.length == 1 ? '' : 's'} stored on this device',
+                  s.isHindi
+                      ? '${history.records.length} रिकॉर्ड इस फ़ोन पर सुरक्षित हैं'
+                      : '${history.records.length} record${history.records.length == 1 ? '' : 's'} stored on this device',
                   textAlign: TextAlign.center,
                   style: AppTypography.small.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
@@ -105,12 +110,15 @@ class _HistoryPageState extends State<HistoryPage> {
 
   Future<void> _confirmDelete(BuildContext context, ScanRecord record) async {
     final history = context.read<HistoryController>();
+    final s = Strings.of(context);
     final confirmed = await confirmDestructiveAction(
       context,
-      title: 'Delete this record?',
-      message:
-          'The ${_RecordTile._labelFor(record.scanType).toLowerCase()} from '
-          '${formatDateTime(record.createdAt)} will be removed.',
+      title: s.isHindi ? 'यह रिकॉर्ड हटाएं?' : 'Delete this record?',
+      message: s.isHindi
+          ? '${formatDateTime(record.createdAt)} की जाँच का रिकॉर्ड हटा दिया जाएगा।'
+          : 'The ${_RecordTile._labelFor(record.scanType).toLowerCase()} from '
+              '${formatDateTime(record.createdAt)} will be removed.',
+      confirmLabel: s.isHindi ? 'हटाएं' : 'Delete',
     );
     if (!confirmed || !context.mounted) return;
     await history.delete(record.id);
@@ -118,11 +126,12 @@ class _HistoryPageState extends State<HistoryPage> {
 
   Future<void> _confirmClear(BuildContext context) async {
     final history = context.read<HistoryController>();
+    final s = Strings.of(context);
     final confirmed = await confirmDestructiveAction(
       context,
-      title: 'Clear all scan history?',
-      message: 'Every stored scan record will be removed from this device.',
-      confirmLabel: 'Clear all',
+      title: s.clearHistoryConfirmTitle,
+      message: s.clearHistoryConfirmMsg,
+      confirmLabel: s.isHindi ? 'सभी साफ़ करें' : 'Clear all',
     );
     if (!confirmed || !context.mounted) return;
     await history.clear();

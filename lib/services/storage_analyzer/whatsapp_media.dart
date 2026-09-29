@@ -1,3 +1,6 @@
+import 'package:flutter/widgets.dart';
+
+import '../../core/l10n/strings.dart';
 import '../platform/native_models.dart';
 
 /// Which WhatsApp folder a file came from.
@@ -15,6 +18,22 @@ enum WhatsAppKind {
   const WhatsAppKind(this.label);
 
   final String label;
+
+  String localizedLabel(BuildContext context) {
+    final s = Strings.of(context);
+    if (!s.isHindi) return label;
+    return switch (this) {
+      WhatsAppKind.images => s.kindPhotos,
+      WhatsAppKind.videos => s.kindVideos,
+      WhatsAppKind.gifs => s.kindGifs,
+      WhatsAppKind.voiceNotes => s.kindVoiceNotes,
+      WhatsAppKind.audio => s.kindAudio,
+      WhatsAppKind.documents => s.kindDocuments,
+      WhatsAppKind.stickers => s.kindStickers,
+      WhatsAppKind.statuses => s.kindStatuses,
+      WhatsAppKind.other => s.kindOther,
+    };
+  }
 }
 
 /// A file from a WhatsApp / WhatsApp Business media folder, with where it
@@ -93,6 +112,19 @@ enum WhatsAppFilter {
   const WhatsAppFilter(this.label);
 
   final String label;
+
+  String localizedLabel(BuildContext context) {
+    final s = Strings.of(context);
+    if (!s.isHindi) return label;
+    return switch (this) {
+      WhatsAppFilter.all => s.filterAll,
+      WhatsAppFilter.old => s.filterOld,
+      WhatsAppFilter.large => s.filterLarge,
+      WhatsAppFilter.received => s.filterReceived,
+      WhatsAppFilter.sent => s.filterSent,
+      WhatsAppFilter.duplicates => s.filterDuplicates,
+    };
+  }
 }
 
 /// Pure helpers so the screen stays thin and the rules are testable.

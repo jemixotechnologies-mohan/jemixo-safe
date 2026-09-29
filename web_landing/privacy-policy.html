@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Jemixo Safe</title>
+  <meta name="description" content="Privacy Policy for Jemixo Safe Android application. Complete transparency on zero data collection, permissions, and on-device processing.">
+  <link rel="icon" type="image/png" href="/images/appicon.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand">
+        <img src="/images/appicon.png" alt="Jemixo Safe" class="brand-icon">
+        <span class="brand-text">Jemixo Safe</span>
+      </a>
+      <div class="nav-actions">
+        <a href="/" class="btn btn-outline btn-sm">&larr; Back to Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="legal-page">
+    <div class="container">
+      <div class="legal-header">
+        <a href="/" class="legal-back-btn">&larr; Return to Home</a>
+        <h1 class="legal-title">Privacy Policy</h1>
+        <p class="legal-meta">Effective Date: September 29, 2026 • Version: 1.1.0 • Application: Jemixo Safe (com.jemixo.safe)</p>
+      </div>
+
+      <div class="legal-content">
+        <div class="legal-highlight-box">
+          <p><strong>Our Core Privacy Promise:</strong> Jemixo Safe operates on a strict <strong>100% on-device architecture</strong>. The application has no user accounts, no tracking analytics, and no remote servers collecting personal data. All scans, file inspections, and risk indicators run entirely within your device CPU.</p>
+        </div>
+
+        <h2>1. Information We Collect</h2>
+        <p>
+          <strong>We collect nothing.</strong> Jemixo Safe does not transmit, upload, sell, or share any personal information, device identifiers, contact lists, photos, videos, messages, or location data with any third party or remote server.
+        </p>
+
+        <h2>2. Data Stored on Your Phone</h2>
+        <p>
+          To provide device security diagnostics and storage cleanup history, the application maintains records locally on your device in an encrypted private SQLite database (in the app sandbox):
+        </p>
+        <ul>
+          <li><strong>Scan Records & Score History:</strong> Timestamps and aggregate risk scores derived from past safety scans so you can compare changes over time.</li>
+          <li><strong>User Preferences:</strong> Theme selection (Light/Dark/System), language selection (English/Hindi), simple mode toggle, and notification alerts toggle.</li>
+        </ul>
+        <p>
+          <strong>All local data can be erased at any time</strong> via the in-app <em>Settings &rarr; Your data &rarr; Delete all</em> button, or automatically by uninstalling the application from your phone.
+        </p>
+
+        <h2>3. Android Permissions & How They Are Used</h2>
+        <p>Jemixo Safe requests only the minimum permissions necessary to perform its safety and cleanup functions:</p>
+
+        <h3>A. Installed Apps Inventory (QUERY_ALL_PACKAGES)</h3>
+        <p>
+          <strong>Purpose:</strong> Device security and fraud prevention. To identify counterfeit banking apps, fake government portals, unverified high-interest loan apps, and apps requesting dangerous combinations of accessibility, SMS, and overlay permissions.
+        </p>
+        <p>
+          <strong>Privacy Guarantee:</strong> The list of installed packages is inspected strictly on the device using local signature rules and threat databases. It is never transmitted or uploaded over the internet.
+        </p>
+
+        <h3>B. Photos, Videos, and Media (READ_MEDIA_IMAGES, READ_MEDIA_VIDEO, READ_MEDIA_AUDIO)</h3>
+        <p>
+          <strong>Purpose:</strong> Storage analysis and WhatsApp cleaner. Used only when you enter the "Clean" tab to identify duplicate files, old forwarded WhatsApp videos, voice notes, and large files.
+        </p>
+        <p>
+          <strong>Privacy Guarantee:</strong> Thumbnails and file hashes are calculated entirely locally in memory. Files are only deleted after you review them and explicitly tap the confirm button.
+        </p>
+
+        <h3>C. Camera (CAMERA)</h3>
+        <p>
+          <strong>Purpose:</strong> QR Code safety scanner. The camera stream is activated strictly while the QR scanner screen is open to read QR codes and reveal embedded UPI payment recipients or website links before you tap.
+        </p>
+        <p>
+          <strong>Privacy Guarantee:</strong> No camera images or video feeds are ever recorded, saved, or uploaded.
+        </p>
+
+        <h3>D. Notifications (POST_NOTIFICATIONS)</h3>
+        <p>
+          <strong>Purpose:</strong> Optional new app install warnings. If enabled in Settings, the background worker checks every 30 minutes for newly sideloaded apps that request sensitive permissions.
+        </p>
+
+        <h2>4. Scam Data & Rule Updates</h2>
+        <p>
+          Once weekly, the application queries a static, publicly hosted JSON file to download updated scam phrases, verified official bank package names, and cybercrime patterns. This HTTP GET request carries <strong>no device identifiers, no user tokens, and no telemetry</strong>.
+        </p>
+
+        <h2>5. Sharing & User-Initiated Actions</h2>
+        <p>
+          When you choose to share a security summary card or export a PDF report, the document is generated locally on your phone and handed over to Android's native system share sheet. You decide which contact or application receives it. Jemixo Safe never intercepts or logs this sharing action.
+        </p>
+
+        <h2>6. Children’s Privacy</h2>
+        <p>
+          Jemixo Safe does not knowingly collect any data from children under the age of 13. The application is a general diagnostic and storage utility safe for all age groups.
+        </p>
+
+        <h2>7. Compliance with Indian DPDP Act 2023 & Global Standards</h2>
+        <p>
+          In accordance with India's Digital Personal Data Protection Act, 2023 (DPDP Act), the European Union General Data Protection Regulation (GDPR), and Google Play Developer Program Policies:
+        </p>
+        <ul>
+          <li><strong>Principle of Data Minimization:</strong> Zero data collection principle.</li>
+          <li><strong>Right to Erasure:</strong> One-tap complete wiping of all on-device historical data.</li>
+          <li><strong>No Third-Party SDKs:</strong> No tracking SDKs, no ad networks (AdMob, Unity, etc.), and no analytics engines (Firebase, Mixpanel, etc.).</li>
+        </ul>
+
+        <h2>8. Contact & Grievance Officer</h2>
+        <p>If you have any questions, feedback, or inquiries regarding this Privacy Policy, please contact our team:</p>
+        <ul>
+          <li><strong>Developer / Entity:</strong> Jemixo Technologies Private Limited</li>
+          <li><strong>Support Email:</strong> <a href="mailto:support@jemixo.com" style="color:var(--emerald-400);">support@jemixo.com</a></li>
+          <li><strong>Privacy Inquiries:</strong> <a href="mailto:privacy@jemixo.in" style="color:var(--emerald-400);">privacy@jemixo.in</a></li>
+          <li><strong>Official Website:</strong> <a href="https://jemixosafe.jemixo.in/" style="color:var(--emerald-400);">https://jemixosafe.jemixo.in/</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 Jemixo Technologies Private Limited. All rights reserved.</div>
+      <div class="footer-legal-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms</a>
+        <a href="/data-deletion">Data Deletion</a>
+        <a href="/contact">Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

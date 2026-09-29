@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -46,6 +47,7 @@ class _UrlCheckerPageState extends State<UrlCheckerPage> {
     final tools = context.watch<ToolsController>();
     final analysis = tools.url;
     final theme = Theme.of(context);
+    final s = Strings.of(context);
 
     // Keep the field in sync when another screen (scam scanner, QR) set the URL.
     if (analysis != null && _controller.text != tools.urlInput) {
@@ -54,14 +56,14 @@ class _UrlCheckerPageState extends State<UrlCheckerPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('URL safety checker'),
+        title: Text(s.checkUrlTitle),
         actions: [
           IconButton(
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute<void>(builder: (_) => const QrScannerPage()),
             ),
             icon: const Icon(Icons.qr_code_scanner_rounded),
-            tooltip: 'Scan a QR code',
+            tooltip: s.checkQr,
           ),
           if (analysis != null)
             IconButton(
@@ -70,7 +72,7 @@ class _UrlCheckerPageState extends State<UrlCheckerPage> {
                 tools.clearUrl();
               },
               icon: const Icon(Icons.clear_all_rounded),
-              tooltip: 'Clear',
+              tooltip: s.isHindi ? 'हटाएं' : 'Clear',
             ),
         ],
       ),
@@ -86,11 +88,13 @@ class _UrlCheckerPageState extends State<UrlCheckerPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Check a link', style: AppTypography.sectionTitle),
+                Text(s.checkLink, style: AppTypography.sectionTitle),
                 const SizedBox(height: 6),
                 Text(
-                  'Paste a link and Jemixo Safe will inspect how it is written — '
-                  'scheme, domain shape, and brand impersonation.',
+                  s.isHindi
+                      ? 'कोई भी लिंक यहाँ पेस्ट करें। Jemixo Safe जाँच करेगा कि यह किसी बैंक या संस्था का फ़र्ज़ी लिंक तो नहीं है।'
+                      : 'Paste a link and Jemixo Safe will inspect how it is written — '
+                          'scheme, domain shape, and brand impersonation.',
                   style: AppTypography.small.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),

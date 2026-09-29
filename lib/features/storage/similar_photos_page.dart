@@ -91,31 +91,50 @@ class _SimilarPhotosPageState extends State<SimilarPhotosPage> {
       ],
       bottom: _selected.isEmpty
           ? null
-          : SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.standard),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        '${_selected.length} selected · ${formatBytes(_selectedBytes())}',
-                        style: AppTypography.bodyStrong,
+          : Material(
+              color: Theme.of(context).colorScheme.surface,
+              elevation: 6,
+              child: SafeArea(
+                top: false,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.standard,
+                    vertical: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      top: BorderSide(
+                        color: Theme.of(context).colorScheme.outline,
                       ),
                     ),
-                    TextButton(
-                      onPressed: () => setState(_selected.clear),
-                      child: const Text('Clear'),
-                    ),
-                    const SizedBox(width: 4),
-                    FilledButton.icon(
-                      onPressed: _deleteSelected,
-                      icon: const Icon(Icons.delete_outline_rounded, size: 18),
-                      label: const Text('Delete'),
-                      style: FilledButton.styleFrom(
-                        backgroundColor: AppColors.danger,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          '${_selected.length} selected · ${formatBytes(_selectedBytes())}',
+                          style: AppTypography.bodyStrong.copyWith(
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                      TextButton(
+                        onPressed: () => setState(_selected.clear),
+                        child: const Text('Clear'),
+                      ),
+                      const SizedBox(width: 8),
+                      FilledButton.icon(
+                        onPressed: _deleteSelected,
+                        icon: const Icon(Icons.delete_outline_rounded, size: 18),
+                        label: const Text('Delete'),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: AppColors.danger,
+                          foregroundColor: Colors.white,
+                          minimumSize: const Size(88, 40),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

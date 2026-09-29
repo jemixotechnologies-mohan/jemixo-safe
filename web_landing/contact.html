@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Developer Support — Jemixo Safe</title>
+  <meta name="description" content="Get help, report bugs, or contact the Jemixo Safe security team. Official developer contact for Google Play Store and customer support.">
+  <link rel="icon" type="image/png" href="/images/appicon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .contact-card:hover {
+      border-color: var(--emerald-500);
+      transform: translateY(-2px);
+    }
+    .contact-card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .contact-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .contact-card-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .contact-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--emerald-400);
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .contact-card-link:hover {
+      text-decoration: underline;
+    }
+    .support-faq {
+      margin-top: 50px;
+    }
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand">
+        <img src="/images/appicon.png" alt="Jemixo Safe" class="brand-icon">
+        <span class="brand-text">Jemixo Safe</span>
+      </a>
+      <div class="nav-actions">
+        <a href="/" class="btn btn-outline btn-sm">&larr; Back to Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="legal-page">
+    <div class="container">
+      <div class="legal-header">
+        <a href="/" class="legal-back-btn">&larr; Return to Home</a>
+        <h1 class="legal-title">Support & Developer Contact</h1>
+        <p class="legal-meta">We are here to assist with app questions, security inquiries, or feedback.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-card-icon">📩</div>
+          <div class="contact-card-title">Customer Support Desk</div>
+          <p class="contact-card-desc">Have questions about app features, simple mode, scan results, or need troubleshooting guidance?</p>
+          <a href="mailto:support@jemixo.com" class="contact-card-link">
+            support@jemixo.com &rarr;
+          </a>
+          <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">Typical response time: Within 24 hours (Mon–Sat)</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">🛡️</div>
+          <div class="contact-card-title">Privacy & Grievance Officer</div>
+          <p class="contact-card-desc">Inquiries regarding data practices, DPDP Act 2023 compliance, or security vulnerability disclosures.</p>
+          <a href="mailto:privacy@jemixo.in" class="contact-card-link">
+            privacy@jemixo.in &rarr;
+          </a>
+          <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">Attn: Grievance Officer, Jemixo Safe</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">🏢</div>
+          <div class="contact-card-title">Developer Entity Details</div>
+          <p class="contact-card-desc">
+            <strong>Company:</strong> Jemixo Technologies Private Limited<br>
+            <strong>Application:</strong> Jemixo Safe (Android)<br>
+            <strong>Package Name:</strong> <code>com.jemixo.safe</code><br>
+            <strong>Country of Origin:</strong> India
+          </p>
+          <a href="https://jemixosafe.jemixo.in/" class="contact-card-link">
+            https://jemixosafe.jemixo.in/ &rarr;
+          </a>
+        </div>
+
+        <div class="contact-card" style="border-color:rgba(239, 68, 68, 0.3);">
+          <div class="contact-card-icon">🚨</div>
+          <div class="contact-card-title">Emergency Cyber Helpline</div>
+          <p class="contact-card-desc">
+            If you have suffered an urgent financial cyber fraud or extortion attempt, immediately call the National Cyber Crime Portal helpline:
+          </p>
+          <a href="tel:1930" class="btn btn-primary btn-sm" style="display:inline-block; margin-top:4px;">
+            📞 Call 1930 (Toll-Free India)
+          </a>
+          <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">Official portal: <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" style="color:var(--emerald-400);">cybercrime.gov.in</a></p>
+        </div>
+      </div>
+
+      <div class="legal-content support-faq">
+        <h2>Frequently Asked Questions</h2>
+        
+        <h3>Why does Jemixo Safe ask to scan installed apps?</h3>
+        <p>
+          Jemixo Safe uses the <code>QUERY_ALL_PACKAGES</code> permission exclusively to evaluate installed apps against known threat vectors (counterfeit banking APKs, malicious loan apps, and suspicious permission combinations). All analysis happens 100% locally on your device — no app list is ever uploaded to any server.
+        </p>
+
+        <h3>How do I switch the language to Hindi?</h3>
+        <p>
+          Tap the <strong>Settings</strong> icon in the app, then tap on <strong>Language (भाषा)</strong> and select <strong>हिंदी (Hindi)</strong>. The entire interface, warning cards, and scan scores will immediately translate into clear, straightforward Hindi.
+        </p>
+
+        <h3>Is my personal WhatsApp chat data accessed?</h3>
+        <p>
+          <strong>Never.</strong> Jemixo Safe only inspects cached media folders (forwarded videos, duplicate pictures, and voice notes) to help you free up valuable device storage. It does not read your private chats, text messages, or encryption keys.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 Jemixo Technologies Private Limited. All rights reserved.</div>
+      <div class="footer-legal-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms</a>
+        <a href="/data-deletion">Data Deletion</a>
+        <a href="/contact">Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

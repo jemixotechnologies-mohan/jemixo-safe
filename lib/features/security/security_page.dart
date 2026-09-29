@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -26,18 +27,19 @@ class SecurityPage extends StatelessWidget {
     final scanner = context.watch<AppScannerService>();
     final security = context.watch<SecurityController>();
     final theme = Theme.of(context);
+    final s = Strings.of(context);
     final score = security.score;
     final review = scanner.needsReview;
 
     return Scaffold(
       appBar: AppBar(
         titleSpacing: AppSpacing.screen,
-        title: Text('Safety check', style: AppTypography.pageTitle),
+        title: Text(s.safetyCheckTitle, style: AppTypography.pageTitle),
         actions: [
           IconButton(
             onPressed: security.isRunning ? null : security.runScan,
             icon: const Icon(Icons.refresh_rounded),
-            tooltip: 'Rescan',
+            tooltip: s.rescan,
           ),
         ],
       ),
@@ -56,9 +58,9 @@ class SecurityPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: AppSpacing.standard),
                 child: WarningBanner(
-                  title: 'Scan problem',
+                  title: s.isHindi ? 'स्कैन में समस्या' : 'Scan problem',
                   message: security.lastError!,
-                  actionLabel: 'Try again',
+                  actionLabel: s.tryAgain,
                   onAction: security.runScan,
                 ),
               ),
@@ -76,11 +78,11 @@ class SecurityPage extends StatelessWidget {
                     ),
                     size: 168,
                     label: score == null
-                        ? 'Not scanned'
+                        ? s.notScanned
                         : RiskPalette.scoreBand(context, score),
                     caption: score == null
-                        ? 'Run a scan to see your score'
-                        : '${scanner.userApps.length} user apps reviewed',
+                        ? s.runCheckToSeeScore
+                        : s.userAppsReviewed(scanner.userApps.length),
                     animate: !security.isRunning,
                   ),
                   const SizedBox(height: AppSpacing.standard),
@@ -97,8 +99,8 @@ class SecurityPage extends StatelessWidget {
                           : const Icon(Icons.play_arrow_rounded),
                       label: Text(
                         security.isRunning
-                            ? 'Scanning…'
-                            : 'Start safety check',
+                            ? s.scanning
+                            : s.startSafetyCheck,
                       ),
                       style: FilledButton.styleFrom(
                         minimumSize: const Size.fromHeight(50),
@@ -108,8 +110,8 @@ class SecurityPage extends StatelessWidget {
                   if (security.lastScanAt != null) ...[
                     const SizedBox(height: AppSpacing.tight),
                     Text(
-                      'Finished in ${formatMillis(security.lastDurationMs.toDouble())} · '
-                      'checked ${formatRelative(security.lastScanAt!.millisecondsSinceEpoch)}',
+                      '${s.isHindi ? "जाँच पूरी हुई" : "Finished in"} ${formatMillis(security.lastDurationMs.toDouble())} · '
+                      '${s.lastCheckedRelative(formatRelative(security.lastScanAt!.millisecondsSinceEpoch))}',
                       style: AppTypography.small.copyWith(
                         color: theme.colorScheme.onSurfaceVariant,
                       ),
@@ -122,18 +124,20 @@ class SecurityPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: AppSpacing.standard),
                 child: InfoBanner(
-                  title: 'Only apps with an icon were checked',
-                  message:
-                      'This Android version hides background-only apps from '
-                      'Jemixo Safe. Everything you can open from the launcher was reviewed.',
+                  title: s.isHindi
+                      ? 'केवल आइकॉन वाले ऐप्स जाँचे गए'
+                      : 'Only apps with an icon were checked',
+                  message: s.isHindi
+                      ? 'एंड्रॉयड का यह वर्ज़न बैकग्राउंड ऐप्स को छिपाता है। लॉन्चर से खुलने वाले सभी ऐप्स की समीक्षा की गई है।'
+                      : 'This Android version hides background-only apps from Jemixo Safe. Everything you can open from the launcher was reviewed.',
                 ),
               ),
             if (scanner.hasScanned) ...[
-              const SectionHeader(title: 'What we checked'),
+              SectionHeader(title: s.whatWeChecked),
               _Checklist(
-                label: 'Fake bank & payment apps',
+                label: s.fakeBankingTitle,
                 detail: scanner.impersonatingApps.isEmpty
-                    ? 'No app borrows a bank, UPI or government brand name without being the official package.'
+                    ? s.fakeBankingDetailSafe
                     : '${scanner.impersonatingApps.length} app${scanner.impersonatingApps.length == 1 ? '' : 's'} '
                           'use a bank or payment brand name but are not the official app.',
                 ok: scanner.impersonatingApps.isEmpty,
@@ -172,9 +176,9 @@ class SecurityPage extends StatelessWidget {
                 ok: scanner.debuggableAppCount == 0,
               ),
               _Checklist(
-                label: 'Install sources',
+                label: s.sideloadedTitle,
                 detail: scanner.sideloadedAppCount == 0
-                    ? 'Every user app came from a recognised app store.'
+                    ? s.sideloadedDetailSafe
                     : '${scanner.sideloadedAppCount} app${scanner.sideloadedAppCount == 1 ? '' : 's'} '
                           'were installed from outside a known store (APK file, ADB or unknown).',
                 ok: scanner.sideloadedAppCount == 0,
@@ -203,10 +207,10 @@ class SecurityPage extends StatelessWidget {
                     MaterialPageRoute<void>(builder: (_) => const ChangesPage()),
                   ),
                   icon: const Icon(Icons.compare_arrows_rounded, size: 18),
-                  label: const Text('What changed since the previous check'),
+                  label: Text(s.whatChangedTitle),
                 ),
               ),
-              const SectionHeader(title: 'Needs review'),
+              SectionHeader(title: s.isHindi ? 'समीक्षा आवश्यक' : 'Needs review'),
               if (review.isEmpty && !security.isRunning)
                 AppCard(
                   child: Row(
@@ -218,7 +222,7 @@ class SecurityPage extends StatelessWidget {
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
-                          'No apps stood out in this scan.',
+                          s.isHindi ? 'इस जाँच में कोई जोखिम भरा ऐप नहीं मिला।' : 'No apps stood out in this scan.',
                           style: AppTypography.bodyStrong,
                         ),
                       ),

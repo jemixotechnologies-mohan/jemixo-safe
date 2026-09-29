@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/utils/formatters.dart';
@@ -117,7 +118,9 @@ class _StorageListScaffoldState extends State<StorageListScaffold> {
                   Expanded(
                     child: Text(
                       widget.summaryLabel!,
-                      style: AppTypography.bodyStrong,
+                      style: AppTypography.bodyStrong.copyWith(
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                     ),
                   ),
                   if (widget.summaryBytes != null)
@@ -155,12 +158,13 @@ class _StorageListScaffoldState extends State<StorageListScaffold> {
 
   Future<void> _confirmDelete(StorageService storage) async {
     final files = _selected.values.toList();
+    final s = Strings.of(context);
     final confirmed = await confirmDestructiveAction(
       context,
-      title: 'Delete ${files.length} file${files.length == 1 ? '' : 's'}?',
-      message:
-          'This permanently removes ${formatBytes(files.fold(0, (s, f) => s + f.sizeBytes))} '
-          'and cannot be undone.',
+      title: s.deleteFilesConfirmTitle(files.length),
+      message: s.deleteFilesConfirmMsg(formatBytes(files.fold(0, (s, f) => s + f.sizeBytes))),
+      confirmLabel: s.delete,
+      cancelLabel: s.cancel,
     );
     if (!confirmed || !mounted) return;
     final result = await storage.deleteFiles(files);
@@ -172,19 +176,23 @@ class _StorageListScaffoldState extends State<StorageListScaffold> {
 
 /// Shared snack-bar wording for a delete outcome.
 void reportDeleteResult(BuildContext context, DeleteResult result, int requested) {
+  final s = Strings.of(context);
   final String message;
   if (result.cancelled) {
-    message = 'Delete cancelled.';
+    message = s.deleteCancelled;
     AppHaptics.tap(context);
   } else if (result.deleted == 0) {
-    message = 'Nothing was deleted. Android refused access to those files.';
+    message = s.isHindi
+        ? 'कुछ भी नहीं हटाया गया। एंड्रॉयड ने उन फ़ाइलों तक पहुँचने की अनुमति नहीं दी।'
+        : 'Nothing was deleted. Android refused access to those files.';
     AppHaptics.warning(context);
   } else if (result.deleted < requested) {
-    message =
-        'Deleted ${result.deleted} of $requested. Android refused the rest.';
+    message = s.isHindi
+        ? '$requested में से ${result.deleted} फ़ाइलें हटाई गईं।'
+        : 'Deleted ${result.deleted} of $requested. Android refused the rest.';
     AppHaptics.warning(context);
   } else {
-    message = 'Deleted ${result.deleted} file${result.deleted == 1 ? '' : 's'}.';
+    message = s.deleteSuccess(result.deleted);
     AppHaptics.success(context);
   }
   showAppSnack(context, message);
@@ -195,6 +203,7 @@ class _Scanning extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = Strings.of(context);
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -202,7 +211,7 @@ class _Scanning extends StatelessWidget {
           const CircularProgressIndicator(),
           const SizedBox(height: AppSpacing.standard),
           Text(
-            'Scanning your storage…',
+            s.scanningStorage,
             style: AppTypography.small.copyWith(
               color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
@@ -228,26 +237,47 @@ class _SelectionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.standard),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                '$count selected · ${formatBytes(bytes)}',
-                style: AppTypography.bodyStrong,
+    final theme = Theme.of(context);
+    final s = Strings.of(context);
+    return Material(
+      color: theme.colorScheme.surface,
+      elevation: 6,
+      child: SafeArea(
+        top: false,
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.standard,
+            vertical: 10,
+          ),
+          decoration: BoxDecoration(
+            border: Border(top: BorderSide(color: theme.colorScheme.outline)),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  s.isHindi
+                      ? '$count ${s.filesSelected} · ${formatBytes(bytes)}'
+                      : '$count selected · ${formatBytes(bytes)}',
+                  style: AppTypography.bodyStrong.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  ),
+                ),
               ),
-            ),
-            TextButton(onPressed: onClear, child: const Text('Clear')),
-            const SizedBox(width: 4),
-            FilledButton.icon(
-              onPressed: onDelete,
-              icon: const Icon(Icons.delete_outline_rounded, size: 18),
-              label: const Text('Delete'),
-              style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
-            ),
-          ],
+              TextButton(onPressed: onClear, child: Text(s.clear)),
+              const SizedBox(width: 8),
+              FilledButton.icon(
+                onPressed: onDelete,
+                icon: const Icon(Icons.delete_outline_rounded, size: 18),
+                label: Text(s.delete),
+                style: FilledButton.styleFrom(
+                  backgroundColor: AppColors.danger,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(88, 40),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

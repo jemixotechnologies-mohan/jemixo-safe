@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/strings.dart';
 import 'app_colors.dart';
 
 /// Semantic status colour mapping. Every score/risk value in the app resolves
@@ -11,6 +12,18 @@ enum RiskLevel {
   medium,
   high,
   critical;
+
+  String localizedLabel(BuildContext context) {
+    final s = Strings.of(context);
+    if (!s.isHindi) return label;
+    return switch (this) {
+      RiskLevel.safe => s.riskSafe,
+      RiskLevel.low => s.riskLow,
+      RiskLevel.medium => s.riskReview,
+      RiskLevel.high => s.riskHigh,
+      RiskLevel.critical => s.riskCritical,
+    };
+  }
 
   String get label => switch (this) {
     RiskLevel.safe => 'Good',
@@ -57,6 +70,13 @@ class RiskPalette {
   }
 
   static String scoreBand(BuildContext context, int score) {
+    final s = Strings.of(context);
+    if (s.isHindi) {
+      if (score >= 90) return s.excellent;
+      if (score >= 75) return s.good;
+      if (score >= 50) return s.needsReview;
+      return s.attentionRequired;
+    }
     if (score >= 90) return 'Excellent';
     if (score >= 75) return 'Good';
     if (score >= 50) return 'Needs Review';

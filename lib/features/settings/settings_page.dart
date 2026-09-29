@@ -3,6 +3,7 @@ import 'package:permission_handler/permission_handler.dart' as ph;
 import 'package:provider/provider.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/utils/haptics.dart';
@@ -57,11 +58,12 @@ class _SettingsPageState extends State<SettingsPage> {
     final settings = context.watch<SettingsController>();
     final threat = context.watch<ThreatDataService>();
     final theme = Theme.of(context);
+    final s = Strings.of(context);
     final sliderValue =
         _sliderValue ?? settings.largeFileThresholdMb.toDouble().clamp(20, 1020);
 
     return AppPageScaffold(
-      title: 'Settings',
+      title: s.settingsTitle,
       child: ListView(
         padding: const EdgeInsets.fromLTRB(
           AppSpacing.screen,
@@ -70,7 +72,7 @@ class _SettingsPageState extends State<SettingsPage> {
           AppSpacing.standard * 2,
         ),
         children: [
-          const SectionHeader(title: 'For family'),
+          SectionHeader(title: s.forFamilySection),
           AppCard(
             child: Column(
               children: [
@@ -82,10 +84,10 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Language for simple mode & emergency screens',
+                            Text(s.appLanguageTitle,
                                 style: AppTypography.bodyStrong),
                             Text(
-                              'The rest of the app stays in English for now.',
+                              s.appLanguageSubtitle,
                               style: AppTypography.small.copyWith(
                                 color: theme.colorScheme.onSurfaceVariant,
                               ),
@@ -95,11 +97,11 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       SegmentedButton<String>(
                         segments: const [
-                          ButtonSegment(value: 'en', label: Text('EN')),
-                          ButtonSegment(value: 'hi', label: Text('हिं')),
+                          ButtonSegment(value: 'en', label: Text('English')),
+                          ButtonSegment(value: 'hi', label: Text('हिन्दी')),
                         ],
                         selected: {settings.language},
-                        onSelectionChanged: (s) => settings.setLanguage(s.first),
+                        onSelectionChanged: (selection) => settings.setLanguage(selection.first),
                         style: const ButtonStyle(
                           visualDensity: VisualDensity.compact,
                         ),
@@ -116,10 +118,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     if (value) Navigator.of(context).popUntil((r) => r.isFirst);
                   },
                   contentPadding: EdgeInsets.zero,
-                  title: Text('Simple mode', style: AppTypography.bodyStrong),
+                  title: Text(s.simpleModeTitle, style: AppTypography.bodyStrong),
                   subtitle: Text(
-                    'Large text and four big buttons: check a message, a link, a '
-                    'QR code, or get help. Good for parents and grandparents.',
+                    s.simpleModeSubtitle,
                     style: AppTypography.small.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -132,11 +133,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       ? null
                       : (value) => _setInstallAlerts(settings, value),
                   contentPadding: EdgeInsets.zero,
-                  title: Text('New app alerts', style: AppTypography.bodyStrong),
+                  title: Text(s.installAlertsTitle, style: AppTypography.bodyStrong),
                   subtitle: Text(
-                    'Every 30 minutes, check for newly installed apps and warn '
-                    'when one came from outside a store or asks for SMS, contacts '
-                    'or accessibility. Runs on the device only.',
+                    s.installAlertsSubtitle,
                     style: AppTypography.small.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -145,24 +144,24 @@ class _SettingsPageState extends State<SettingsPage> {
               ],
             ),
           ),
-          const SectionHeader(title: 'Scam data'),
+          SectionHeader(title: s.scamDataSection),
           AppCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DetailRow(
-                  label: 'List version',
+                  label: s.listVersionLabel,
                   value: 'v${threat.data.version} (${threat.source})'
                       '${threat.data.updatedAt.isEmpty ? '' : ' · ${threat.data.updatedAt}'}',
                 ),
                 DetailRow(
-                  label: 'Last checked',
+                  label: s.lastCheckedLabel,
                   value: threat.lastChecked == null
-                      ? 'Never'
+                      ? s.neverLabel
                       : formatRelative(threat.lastChecked!.millisecondsSinceEpoch),
                 ),
                 DetailRow(
-                  label: 'Contents',
+                  label: s.contentsLabel,
                   value:
                       '${threat.data.brands.length} brands · ${threat.data.officialApps.length} official apps · ${threat.data.loanApps.length} lenders',
                 ),
@@ -204,41 +203,41 @@ class _SettingsPageState extends State<SettingsPage> {
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
                       : const Icon(Icons.refresh_rounded, size: 18),
-                  label: const Text('Check for updates now'),
+                  label: Text(s.checkForUpdatesNow),
                 ),
               ],
             ),
           ),
-          const SectionHeader(title: 'Appearance'),
+          SectionHeader(title: s.appearanceSection),
           AppCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Theme', style: AppTypography.bodyStrong),
+                Text(s.themeTitle, style: AppTypography.bodyStrong),
                 const SizedBox(height: 4),
                 Text(
-                  'Dark mode follows your system setting by default.',
+                  s.themeSubtitle,
                   style: AppTypography.small.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
                 const SizedBox(height: AppSpacing.standard),
                 SegmentedButton<ThemeMode>(
-                  segments: const [
+                  segments: [
                     ButtonSegment(
                       value: ThemeMode.system,
-                      label: Text('System'),
-                      icon: Icon(Icons.brightness_auto_rounded, size: 16),
+                      label: Text(s.themeSystem),
+                      icon: const Icon(Icons.brightness_auto_rounded, size: 16),
                     ),
                     ButtonSegment(
                       value: ThemeMode.light,
-                      label: Text('Light'),
-                      icon: Icon(Icons.light_mode_rounded, size: 16),
+                      label: Text(s.themeLight),
+                      icon: const Icon(Icons.light_mode_rounded, size: 16),
                     ),
                     ButtonSegment(
                       value: ThemeMode.dark,
-                      label: Text('Dark'),
-                      icon: Icon(Icons.dark_mode_rounded, size: 16),
+                      label: Text(s.themeDark),
+                      icon: const Icon(Icons.dark_mode_rounded, size: 16),
                     ),
                   ],
                   selected: {settings.themeMode},
@@ -250,7 +249,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ],
             ),
           ),
-          const SectionHeader(title: 'Scan options'),
+          SectionHeader(title: s.scanOptionsSection),
           AppCard(
             child: Column(
               children: [
@@ -259,12 +258,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   onChanged: settings.setSaveHistory,
                   contentPadding: EdgeInsets.zero,
                   title: Text(
-                    'Save scan history',
+                    s.saveHistoryTitle,
                     style: AppTypography.bodyStrong,
                   ),
                   subtitle: Text(
-                    'Keeps a local record of each scan so Reports and History '
-                    'have something to show.',
+                    s.saveHistorySubtitle,
                     style: AppTypography.small.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -279,11 +277,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                   contentPadding: EdgeInsets.zero,
                   title: Text(
-                    'Haptic feedback',
+                    s.hapticsTitle,
                     style: AppTypography.bodyStrong,
                   ),
                   subtitle: Text(
-                    'A short vibration when a scan or cleanup completes.',
+                    s.hapticsSubtitle,
                     style: AppTypography.small.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -299,7 +297,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                   contentPadding: EdgeInsets.zero,
                   title: Text(
-                    'Flag debuggable builds',
+                    s.flagDebuggableTitle,
                     style: AppTypography.bodyStrong,
                   ),
                   subtitle: Text(
@@ -313,7 +311,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ],
             ),
           ),
-          const SectionHeader(title: 'Large file threshold'),
+          SectionHeader(title: s.largeFileThresholdSection),
           AppCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -322,7 +320,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   children: [
                     Expanded(
                       child: Text(
-                        'Flag files above',
+                        s.flagFilesAbove,
                         style: AppTypography.bodyStrong,
                       ),
                     ),
@@ -355,42 +353,40 @@ class _SettingsPageState extends State<SettingsPage> {
               ],
             ),
           ),
-          const SectionHeader(title: 'Privacy'),
-          const AppCard(
+          SectionHeader(title: s.privacySection),
+          AppCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('No account, no cloud', style: AppTypography.bodyStrong),
-                SizedBox(height: 6),
+                Text(s.noCloudTitle, style: AppTypography.bodyStrong),
+                const SizedBox(height: 6),
                 Text(
-                  'Jemixo Safe has no sign-in, no server and no analytics. Scans, '
-                  'scores, reports and history are all produced and stored on '
-                  'this device. Uninstalling the app removes all of it.',
-                  style: TextStyle(height: 1.45),
+                  s.noCloudBody,
+                  style: const TextStyle(height: 1.45),
                 ),
               ],
             ),
           ),
-          const SectionHeader(title: 'Your data'),
+          SectionHeader(title: s.yourDataSection),
           const _DataControls(),
           const SizedBox(height: AppSpacing.tight),
           FeatureCard(
             icon: Icons.policy_outlined,
-            title: 'Privacy policy',
-            subtitle: 'Readable offline; published copy linked inside',
+            title: s.privacyPolicyTitle,
+            subtitle: s.privacyPolicySubtitle,
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute<void>(builder: (_) => const PrivacyPolicyPage()),
             ),
             statusIcon: Icons.chevron_right_rounded,
           ),
-          const SectionHeader(title: 'About'),
+          SectionHeader(title: s.aboutSection),
           AppCard(
             child: Column(
               children: [
-                DetailRow(label: 'App', value: AppConstants.appName),
-                DetailRow(label: 'Version', value: AppConstants.version),
+                DetailRow(label: s.appLabel, value: AppConstants.appName),
+                DetailRow(label: s.versionLabel, value: AppConstants.version),
                 DetailRow(
-                  label: 'Package',
+                  label: s.packageLabel,
                   value: 'com.jemixo.safe',
                   monospace: true,
                 ),
@@ -412,15 +408,16 @@ class _DataControls extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final history = context.read<HistoryController>();
+    final s = Strings.of(context);
 
     return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Stored on this device', style: AppTypography.bodyStrong),
+          Text(s.storedOnDeviceTitle, style: AppTypography.bodyStrong),
           const SizedBox(height: 4),
           Text(
-            'You can remove any of it at any time.',
+            s.storedOnDeviceSubtitle,
             style: AppTypography.small.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
             ),
@@ -432,17 +429,16 @@ class _DataControls extends StatelessWidget {
                 child: OutlinedButton.icon(
                   onPressed: () => _confirm(
                     context,
-                    title: 'Clear scan history?',
-                    message:
-                        'Past scan records will be removed from this device.',
-                    confirmLabel: 'Clear',
+                    title: s.clearHistoryConfirmTitle,
+                    message: s.clearHistoryConfirmMsg,
+                    confirmLabel: s.clearHistoryBtn,
                     action: () async {
                       await history.clear();
-                      if (context.mounted) showAppSnack(context, 'History cleared.');
+                      if (context.mounted) showAppSnack(context, s.clearHistoryDone);
                     },
                   ),
                   icon: const Icon(Icons.history_toggle_off_rounded, size: 18),
-                  label: const Text('Clear history'),
+                  label: Text(s.clearHistoryBtn),
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size.fromHeight(46),
                   ),
@@ -453,12 +449,9 @@ class _DataControls extends StatelessWidget {
                 child: OutlinedButton.icon(
                   onPressed: () => _confirm(
                     context,
-                    title: 'Delete all app data?',
-                    message:
-                        'Scan history, preferences and every other setting will '
-                        'be erased and the welcome screen will show again. This '
-                        'cannot be undone.',
-                    confirmLabel: 'Delete everything',
+                    title: s.deleteAllConfirmTitle,
+                    message: s.deleteAllConfirmMsg,
+                    confirmLabel: s.deleteEverythingBtn,
                     action: () async {
                       final repository = context.read<SettingsRepository>();
                       final settings = context.read<SettingsController>();
@@ -471,7 +464,7 @@ class _DataControls extends StatelessWidget {
                     },
                   ),
                   icon: const Icon(Icons.delete_forever_rounded, size: 18),
-                  label: const Text('Delete all'),
+                  label: Text(s.deleteAllBtn),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.danger,
                     minimumSize: const Size.fromHeight(46),

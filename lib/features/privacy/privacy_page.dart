@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/l10n/strings.dart';
 import '../../core/permissions/permission_catalog.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
@@ -23,6 +24,7 @@ class PrivacyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final scanner = context.watch<AppScannerService>();
     final theme = Theme.of(context);
+    final s = Strings.of(context);
     final score = scanner.userApps.isEmpty ? null : scanner.privacyScore;
     final level = score == null
         ? RiskLevel.medium
@@ -38,7 +40,7 @@ class PrivacyPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: AppSpacing.screen,
-        title: Text('Privacy', style: AppTypography.pageTitle),
+        title: Text(s.privacyTitle, style: AppTypography.pageTitle),
       ),
       body: RefreshIndicator(
         onRefresh: scanner.scan,
@@ -58,15 +60,15 @@ class PrivacyPage extends StatelessWidget {
                     score: score ?? 0,
                     color: RiskPalette.color(context, level),
                     size: 150,
-                    label: level.label,
-                    caption: 'Privacy score',
+                    label: level.localizedLabel(context),
+                    caption: s.privacyScore,
                     animate: false,
                   ),
                   const SizedBox(height: AppSpacing.standard),
                   Text(
                     score == null
-                        ? 'Run a security scan to calculate your privacy score.'
-                        : 'Higher means fewer sensitive permissions across your apps.',
+                        ? (s.isHindi ? 'प्राइवेसी स्कोर देखने के लिए सुरक्षा जाँच चलाएं।' : 'Run a security scan to calculate your privacy score.')
+                        : s.privacyScoreHint,
                     textAlign: TextAlign.center,
                     style: AppTypography.small.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
@@ -79,7 +81,7 @@ class PrivacyPage extends StatelessWidget {
                       onPressed: () =>
                           _open(context, const InstalledAppsPage()),
                       icon: const Icon(Icons.apps_rounded, size: 18),
-                      label: const Text('Review installed apps'),
+                      label: Text(s.reviewInstalledApps),
                       style: FilledButton.styleFrom(
                         minimumSize: const Size.fromHeight(48),
                       ),
@@ -88,24 +90,24 @@ class PrivacyPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SectionHeader(title: 'Analyzers'),
+            SectionHeader(title: s.analyzers),
             FeatureCard(
               icon: Icons.verified_user_outlined,
-              title: 'Installed app analyzer',
-              subtitle: 'Sort by risk, size or date and inspect any app\'s permissions',
+              title: s.installedAppAnalyzerTitle,
+              subtitle: s.installedAppAnalyzerSubtitle,
               iconColor: AppColors.royalBlue,
               statusIcon: Icons.chevron_right_rounded,
               onTap: () => _open(context, const InstalledAppsPage()),
             ),
             FeatureCard(
               icon: Icons.android_outlined,
-              title: 'APK analyzer',
-              subtitle: 'Inspect an APK file you have on your device before installing',
+              title: s.apkAnalyzerTitle,
+              subtitle: s.apkAnalyzerSubtitle,
               iconColor: AppColors.gold,
               statusIcon: Icons.chevron_right_rounded,
               onTap: () => _open(context, const ApkAnalyzerPage()),
             ),
-            const SectionHeader(title: 'Permissions by category'),
+            SectionHeader(title: s.permissionsByCategory),
             if (usage.isEmpty)
               const EmptyState(
                 title: 'No permission data yet',

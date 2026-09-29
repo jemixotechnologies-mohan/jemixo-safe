@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -70,6 +71,7 @@ class _DashboardPageState extends State<DashboardPage> {
     final storage = context.watch<StorageService>();
     final threat = context.watch<ThreatDataService>();
     final theme = Theme.of(context);
+    final s = Strings.of(context);
 
     final score = security.score;
     final fakes = scanner.impersonatingApps.length + scanner.unlistedLoanApps.length;
@@ -92,9 +94,9 @@ class _DashboardPageState extends State<DashboardPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Jemixo Safe', style: AppTypography.pageTitle),
+                Text(s.appName, style: AppTypography.pageTitle),
                 Text(
-                  AppConstants.tagline,
+                  s.tagline,
                   style: AppTypography.small.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
@@ -107,7 +109,7 @@ class _DashboardPageState extends State<DashboardPage> {
           IconButton(
             onPressed: () => _open(context, const SettingsPage()),
             icon: const Icon(Icons.settings_outlined),
-            tooltip: 'Settings',
+            tooltip: s.settings,
           ),
         ],
       ),
@@ -138,142 +140,145 @@ class _DashboardPageState extends State<DashboardPage> {
             if (fakes > 0) ...[
               const SizedBox(height: AppSpacing.standard),
               CriticalBanner(
-                title: '$fakes suspicious finance app${fakes == 1 ? '' : 's'}',
-                message:
-                    'A look-alike bank / payment app or an unlisted loan app is '
-                    'installed. Review it before you sign in or borrow.',
-                actionLabel: 'Review now',
+                title: s.isHindi
+                    ? '$fakes संदिग्ध बैंकिंग या लोन ऐप'
+                    : '$fakes suspicious finance app${fakes == 1 ? '' : 's'}',
+                message: s.isHindi
+                    ? 'नकली बैंक या बिना लाइसेंस वाला लोन ऐप मिला है। उपयोग से पहले जाँच करें।'
+                    : 'A look-alike bank / payment app or an unlisted loan app is installed. Review it before you sign in or borrow.',
+                actionLabel: s.reviewNow,
                 onAction: () => _open(context, const FinanceAppsPage()),
               ),
             ],
             if (special > 0) ...[
               const SizedBox(height: AppSpacing.standard),
               WarningBanner(
-                title: '$special app${special == 1 ? '' : 's'} with special access',
-                message:
-                    'An app can read your screen or notifications, is a device '
-                    'admin, or is hidden with spying-type permissions.',
-                actionLabel: 'Review',
+                title: s.isHindi
+                    ? '$special विशेष अनुमति वाले ऐप्स'
+                    : '$special app${special == 1 ? '' : 's'} with special access',
+                message: s.isHindi
+                    ? 'कोई ऐप आपकी स्क्रीन या नोटिफ़िकेशन पढ़ सकता है या डिवाइस एडमिन बना हुआ है।'
+                    : 'An app can read your screen or notifications, is a device admin, or is hidden with spying-type permissions.',
+                actionLabel: s.review,
                 onAction: () => _open(context, const SpecialAccessPage()),
               ),
             ],
             const SizedBox(height: AppSpacing.standard),
             _HealthGrid(health: health),
-            const SectionHeader(title: 'Check before you act'),
+            SectionHeader(title: s.checkBeforeYouAct),
             _QuickTool(
               icon: Icons.fact_check_outlined,
-              title: 'Scam message scanner',
-              subtitle:
-                  'Paste a message, or share one from any app',
+              title: s.scamScannerTitle,
+              subtitle: s.scamScannerSub,
               onTap: () => _open(context, const ScamScannerPage()),
             ),
             _QuickTool(
               icon: Icons.document_scanner_outlined,
-              title: 'Check a screenshot',
-              subtitle: 'Text is read on the phone, in English and Hindi',
+              title: s.checkScreenshotTitle,
+              subtitle: s.checkScreenshotSubtitle,
               onTap: () => _open(context, const ScreenshotCheckPage()),
             ),
             _QuickTool(
               icon: Icons.call_outlined,
-              title: 'Check a phone number',
-              subtitle: 'Can a bank or the police really call from it?',
+              title: s.checkPhoneTitle,
+              subtitle: s.checkPhoneSubtitle,
               onTap: () => _open(context, const CallCheckPage()),
             ),
             _QuickTool(
               icon: Icons.link_outlined,
-              title: 'URL safety checker',
-              subtitle: 'Check a link for impersonation and insecure patterns',
+              title: s.checkUrlTitle,
+              subtitle: s.checkUrlSubtitle,
               onTap: () => _open(context, const UrlCheckerPage()),
             ),
             _QuickTool(
               icon: Icons.qr_code_scanner_rounded,
-              title: 'QR & UPI check',
-              subtitle: 'See who gets paid before you scan in your UPI app',
+              title: s.checkQrTitle,
+              subtitle: s.checkQrSubtitle,
               onTap: () => _open(context, const QrScannerPage()),
             ),
             FeatureCard(
               icon: Icons.phone_in_talk_rounded,
-              title: 'Someone is threatening me on a call',
-              subtitle: 'Police, CBI, customs, bank: read this before you do anything',
+              title: s.threatCallTitle,
+              subtitle: s.threatCallSubtitle,
               iconColor: AppColors.warning,
               onTap: () => _open(context, const ScamCallPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.sos_rounded,
-              title: 'I think I got scammed',
-              subtitle: 'Call 1930 and freeze the money in the first hour',
+              title: s.gotScammedTitle,
+              subtitle: s.gotScammedSubtitle,
               iconColor: AppColors.danger,
               onTap: () => _open(context, const EmergencyPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
-            const SectionHeader(title: 'Your apps'),
+            SectionHeader(title: s.yourApps),
             FeatureCard(
               icon: Icons.visibility_outlined,
-              title: 'Apps with special access',
-              subtitle: 'Screen readers, notification access, device admin, hidden apps',
+              title: s.appsSpecialAccessTitle,
+              subtitle: s.appsSpecialAccessSubtitle,
               onTap: () => _open(context, const SpecialAccessPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.compare_arrows_rounded,
-              title: 'What changed since last check',
-              subtitle: 'New apps and permissions added by updates',
+              title: s.whatChangedTitle,
+              subtitle: s.whatChangedSubtitle,
               onTap: () => _open(context, const ChangesPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             if (threat.data.radar.isNotEmpty) ...[
-              const SectionHeader(title: 'Scam radar'),
+              SectionHeader(title: s.isHindi ? 'फ़्रॉड रडार' : 'Scam radar'),
               for (final item in threat.data.radar.take(3))
                 _RadarCard(item: item),
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(
-                  'Patterns reported this week · list v${threat.data.version}'
-                  '${threat.data.updatedAt.isEmpty ? '' : ' · ${threat.data.updatedAt}'}',
+                  s.isHindi
+                      ? 'इस सप्ताह रिपोर्ट किए गए पैटर्न · सूची v${threat.data.version}'
+                      : 'Patterns reported this week · list v${threat.data.version}'
+                          '${threat.data.updatedAt.isEmpty ? '' : ' · ${threat.data.updatedAt}'}',
                   style: AppTypography.small.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
               ),
             ],
-            const SectionHeader(title: 'Device'),
+            SectionHeader(title: s.deviceSection),
             _QuickTool(
               icon: Icons.cleaning_services_outlined,
-              title: 'Storage cleanup',
+              title: s.storageCleanupTitle,
               subtitle: storage.overview == null
-                  ? 'Large files, duplicates, screenshots, downloads'
-                  : '${formatBytes(storage.overview!.freeBytes)} free',
+                  ? s.storageCleanupSubtitle
+                  : '${formatBytes(storage.overview!.freeBytes)} ${s.free}',
               onTap: () => _open(context, const StoragePage()),
             ),
             _QuickTool(
               icon: Icons.chat_outlined,
-              title: 'WhatsApp cleaner',
+              title: s.whatsappCleanerTitle,
               subtitle: storage.whatsappLoaded
-                  ? '${formatBytes(storage.whatsappTotalBytes)} of WhatsApp media'
-                  : 'Free up space from old forwards and big videos',
+                  ? '${formatBytes(storage.whatsappTotalBytes)} · ${s.whatsappCleanerTitle}'
+                  : s.whatsappCleanerSubtitle,
               onTap: () => _open(context, const WhatsAppCleanerPage()),
             ),
             FeatureCard(
               icon: Icons.health_and_safety_outlined,
-              title: 'Device health',
-              subtitle:
-                  'Battery, memory, storage pressure and security settings',
+              title: s.deviceHealthTitle,
+              subtitle: s.deviceHealthSubtitle,
               onTap: () => _open(context, const DeviceHealthPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.wifi_outlined,
-              title: 'Network',
-              subtitle: 'Connection type, validation and network settings',
+              title: s.networkTitle,
+              subtitle: s.networkSubtitle,
               onTap: () => _open(context, const NetworkPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.grid_view_rounded,
-              title: 'All tools',
-              subtitle:
-                  'Reports, history, hardware tests, QR scanner, settings',
+              title: s.allToolsTitle,
+              subtitle: s.allToolsSubtitle,
               onTap: () => _open(context, const MorePage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
@@ -281,7 +286,7 @@ class _DashboardPageState extends State<DashboardPage> {
             const DisclaimerNote(),
             const SizedBox(height: AppSpacing.tight),
             Text(
-              '${AppConstants.appName} ${AppConstants.version} · Runs entirely on this device',
+              '${AppConstants.appName} ${AppConstants.version} · ${s.runsOnDevice}',
               textAlign: TextAlign.center,
               style: AppTypography.small.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
@@ -337,6 +342,7 @@ class _ScoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final s = Strings.of(context);
     final level = score == null
         ? RiskLevel.medium
         : RiskPalette.levelForScore(score!);
@@ -351,28 +357,28 @@ class _ScoreCard extends StatelessWidget {
             color: color,
             size: 150,
             label: score == null
-                ? 'Not scanned'
+                ? s.notScanned
                 : RiskPalette.scoreBand(context, score!),
-            caption: 'Safety score',
+            caption: s.safetyScore,
             animate: !isScanning,
           ),
           const SizedBox(height: AppSpacing.standard),
           Text(
             error != null && score == null
-                ? 'The scan could not read your apps.'
+                ? (s.isHindi ? 'स्कैन आपके ऐप्स को नहीं पढ़ सका।' : 'The scan could not read your apps.')
                 : score == null
-                ? 'Run a check to see your safety score.'
+                ? s.runCheckToSeeScore
                 : needsReview == 0
-                ? 'Nothing needs your attention right now.'
-                : '$needsReview app${needsReview == 1 ? '' : 's'} worth a look.',
+                ? s.noAttentionNeeded
+                : s.appsWorthLook(needsReview),
             textAlign: TextAlign.center,
             style: AppTypography.bodyStrong,
           ),
           const SizedBox(height: 4),
           Text(
             lastScanAt == null
-                ? 'Your first scan takes a few seconds.'
-                : 'Last checked ${formatRelative(lastScanAt!.millisecondsSinceEpoch)}',
+                ? s.firstScanTakesFewSeconds
+                : s.lastCheckedRelative(formatRelative(lastScanAt!.millisecondsSinceEpoch)),
             textAlign: TextAlign.center,
             style: AppTypography.small.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
@@ -387,7 +393,7 @@ class _ScoreCard extends StatelessWidget {
                       ? null
                       : () => _open(context, const SecurityPage()),
                   icon: const Icon(Icons.insights_outlined, size: 18),
-                  label: const Text('Details'),
+                  label: Text(s.details),
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size.fromHeight(46),
                   ),
@@ -404,7 +410,7 @@ class _ScoreCard extends StatelessWidget {
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
                       : const Icon(Icons.play_arrow_rounded),
-                  label: Text(isScanning ? 'Scanning' : 'Scan now'),
+                  label: Text(isScanning ? s.scanning : s.scanNow),
                   style: FilledButton.styleFrom(
                     minimumSize: const Size.fromHeight(46),
                   ),
@@ -431,6 +437,7 @@ class _HealthGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = Strings.of(context);
     return Column(
       children: [
         Row(
@@ -438,7 +445,7 @@ class _HealthGrid extends StatelessWidget {
             Expanded(
               child: _HealthTile(
                 icon: Icons.battery_charging_full_rounded,
-                title: 'Battery',
+                title: s.battery,
                 value: health.batteryLabel,
                 level: health.batteryLevel,
                 onTap: () => Navigator.of(context).push(
@@ -452,12 +459,12 @@ class _HealthGrid extends StatelessWidget {
             Expanded(
               child: _HealthTile(
                 icon: Icons.sd_storage_outlined,
-                title: 'Storage',
+                title: s.storage,
                 value: health.storagePressure == RiskLevel.safe
-                    ? 'Healthy'
+                    ? s.healthy
                     : health.storagePressure == RiskLevel.medium
-                    ? 'Getting low'
-                    : 'Nearly full',
+                    ? s.gettingLow
+                    : s.nearlyFull,
                 level: health.storagePressure,
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute<void>(builder: (_) => const StoragePage()),
@@ -472,7 +479,7 @@ class _HealthGrid extends StatelessWidget {
             Expanded(
               child: _HealthTile(
                 icon: Icons.wifi_rounded,
-                title: 'Network',
+                title: s.networkTitle,
                 value: health.networkLabel,
                 level: health.networkQuality,
                 onTap: () => Navigator.of(context).push(
@@ -486,8 +493,10 @@ class _HealthGrid extends StatelessWidget {
                 icon: health.deviceSecure
                     ? Icons.lock_rounded
                     : Icons.lock_open_rounded,
-                title: 'Lock screen',
-                value: health.deviceSecure ? 'Protected' : 'Not set',
+                title: s.isHindi ? 'स्क्रीन लॉक' : 'Lock screen',
+                value: health.deviceSecure
+                    ? (s.isHindi ? 'सुरक्षित' : 'Protected')
+                    : (s.isHindi ? 'सेट नहीं है' : 'Not set'),
                 level: health.deviceSecure ? RiskLevel.safe : RiskLevel.medium,
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute<void>(

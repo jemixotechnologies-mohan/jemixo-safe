@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/utils/formatters.dart';
@@ -33,6 +34,7 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
     setState(() => _findingDuplicates = true);
     await storage.loadDuplicates();
     if (!mounted) return;
+    final s = Strings.of(context);
     setState(() {
       _duplicateIds = WhatsAppCleaner.duplicateIdsFrom(storage.duplicates);
       _duplicatesChecked = true;
@@ -40,17 +42,18 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
       _filter = WhatsAppFilter.duplicates;
     });
     if (_duplicateIds.isEmpty) {
-      showAppSnack(context, 'No duplicate WhatsApp files found.');
+      showAppSnack(context, s.noDuplicatesFound);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final storage = context.watch<StorageService>();
+    final s = Strings.of(context);
     return StorageListScaffold(
-      title: 'WhatsApp cleaner',
+      title: s.whatsappCleanerTitle,
       requiredAccess: StorageAccess.media,
-      summaryLabel: 'WhatsApp media on this phone',
+      summaryLabel: s.whatsappMediaOnPhone,
       summaryBytes: storage.whatsappTotalBytes,
       isLoading: (s) => s.isLoadingWhatsApp,
       onLoad: (s, _) => s.loadWhatsApp(),
@@ -58,12 +61,9 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
       builder: (context, storage, selection, onToggle) {
         final all = storage.whatsapp;
         if (all.isEmpty) {
-          return const EmptyState(
-            title: 'No WhatsApp media found',
-            message:
-                'Either WhatsApp is not installed, media auto-download is off, '
-                'or Android has not indexed the files yet. Only photos, videos, '
-                'GIFs and audio are visible to this app.',
+          return EmptyState(
+            title: s.noMediaFound,
+            message: s.noMediaFoundMsg,
             icon: Icons.chat_outlined,
           );
         }
@@ -93,12 +93,14 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
                 children: [
                   Text(
                     '${formatBytes(total)} in ${all.length} files',
-                    style: AppTypography.sectionTitle,
+                    style: AppTypography.sectionTitle.copyWith(
+                      color: theme.colorScheme.onSurface,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   for (final entry in byKind.take(5))
                     MetricBar(
-                      label: entry.key.label,
+                      label: entry.key.localizedLabel(context),
                       valueLabel: formatBytes(entry.value),
                       fraction: total == 0 ? 0 : entry.value / total,
                       color: entry.key == WhatsAppKind.videos
@@ -109,12 +111,15 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
               ),
             ),
             const SizedBox(height: AppSpacing.tight),
-            const InfoBanner(
-              title: 'Deleted files stay in the chat as "missing"',
-              message:
-                  'The message remains but the photo or video will not open. Keep '
-                  'anything you still need, or back it up first. Documents (PDF, '
-                  'APK, zip) are not visible to Jemixo Safe.',
+            InfoBanner(
+              title: s.isHindi
+                  ? 'हटाए गए मीडिया चैट में "लापता" दिखेंगे'
+                  : 'Deleted files stay in the chat as "missing"',
+              message: s.isHindi
+                  ? 'मैसेज रहेगा लेकिन फ़ोटो या वीडियो नहीं खुलेगा। ज़रूरी चीज़ें पहले बैकअप कर लें।'
+                  : 'The message remains but the photo or video will not open. Keep '
+                      'anything you still need, or back it up first. Documents (PDF, '
+                      'APK, zip) are not visible to Jemixo Safe.',
             ),
             const SizedBox(height: AppSpacing.standard),
             SizedBox(
@@ -126,7 +131,7 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: ChoiceChip(
-                        label: Text(filter.label),
+                        label: Text(filter.localizedLabel(context)),
                         selected: _filter == filter,
                         onSelected: (_) {
                           if (filter == WhatsAppFilter.duplicates &&
@@ -150,7 +155,7 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: ChoiceChip(
-                      label: const Text('All types'),
+                      label: Text(s.allTypes),
                       selected: _kind == null,
                       onSelected: (_) => setState(() => _kind = null),
                     ),
@@ -159,7 +164,7 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: ChoiceChip(
-                        label: Text(entry.key.label),
+                        label: Text(entry.key.localizedLabel(context)),
                         selected: _kind == entry.key,
                         onSelected: (_) => setState(() => _kind = entry.key),
                       ),
@@ -190,14 +195,14 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
                         onToggle(media.file, true);
                       }
                     },
-                    child: const Text('Select all shown'),
+                    child: Text(s.selectAllShown),
                   ),
               ],
             ),
             if (shown.isEmpty)
-              const EmptyState(
-                title: 'Nothing matches this filter',
-                message: 'Try another filter or file type.',
+              EmptyState(
+                title: s.isHindi ? 'इस फ़िल्टर से कुछ नहीं मिला' : 'Nothing matches this filter',
+                message: s.isHindi ? 'कोई दूसरा फ़िल्टर या फ़ाइल प्रकार चुनें।' : 'Try another filter or file type.',
                 icon: Icons.filter_alt_off_rounded,
                 compact: true,
               )
@@ -213,8 +218,8 @@ class _WhatsAppCleanerPageState extends State<WhatsAppCleanerPage> {
                   ),
                   onOpen: () => openStorageFile(context, storage, media.file),
                   note: [
-                    media.kind.label,
-                    if (media.sent) 'Sent by you',
+                    media.kind.localizedLabel(context),
+                    if (media.sent) s.sentByYou,
                     if (media.business) 'WhatsApp Business',
                   ].join(' · '),
                   trailing: Checkbox(

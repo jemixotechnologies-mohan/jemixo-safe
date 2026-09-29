@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../core/l10n/strings.dart';
 import '../core/theme/app_colors.dart';
 import '../features/dashboard/dashboard_page.dart';
 import '../features/privacy/app_detail_page.dart';
@@ -35,34 +36,6 @@ class MainShell extends StatefulWidget {
 class _MainShellState extends State<MainShell> {
   int _index = 0;
   StreamSubscription<SharedContent>? _shareSubscription;
-
-  static const _destinations = <NavigationDestination>[
-    NavigationDestination(
-      icon: Icon(Icons.home_outlined),
-      selectedIcon: Icon(Icons.home_rounded),
-      label: 'Home',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.shield_outlined),
-      selectedIcon: Icon(Icons.shield_rounded),
-      label: 'Safety',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.privacy_tip_outlined),
-      selectedIcon: Icon(Icons.privacy_tip_rounded),
-      label: 'Privacy',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.cleaning_services_outlined),
-      selectedIcon: Icon(Icons.cleaning_services_rounded),
-      label: 'Clean',
-    ),
-    NavigationDestination(
-      icon: Icon(Icons.grid_view_outlined),
-      selectedIcon: Icon(Icons.grid_view_rounded),
-      label: 'More',
-    ),
-  ];
 
   @override
   void initState() {
@@ -145,6 +118,35 @@ class _MainShellState extends State<MainShell> {
     final simple = context.select<SettingsController, bool>((s) => s.simpleMode);
     if (simple) return const SimpleHomePage();
 
+    final s = Strings.of(context);
+    final destinations = <NavigationDestination>[
+      NavigationDestination(
+        icon: const Icon(Icons.home_outlined),
+        selectedIcon: const Icon(Icons.home_rounded),
+        label: s.tabHome,
+      ),
+      NavigationDestination(
+        icon: const Icon(Icons.shield_outlined),
+        selectedIcon: const Icon(Icons.shield_rounded),
+        label: s.tabSafety,
+      ),
+      NavigationDestination(
+        icon: const Icon(Icons.privacy_tip_outlined),
+        selectedIcon: const Icon(Icons.privacy_tip_rounded),
+        label: s.tabPrivacy,
+      ),
+      NavigationDestination(
+        icon: const Icon(Icons.cleaning_services_outlined),
+        selectedIcon: const Icon(Icons.cleaning_services_rounded),
+        label: s.tabClean,
+      ),
+      NavigationDestination(
+        icon: const Icon(Icons.grid_view_outlined),
+        selectedIcon: const Icon(Icons.grid_view_rounded),
+        label: s.tabMore,
+      ),
+    ];
+
     return Scaffold(
       body: IndexedStack(
         index: _index,
@@ -162,7 +164,7 @@ class _MainShellState extends State<MainShell> {
         backgroundColor: Theme.of(context).brightness == Brightness.dark
             ? AppColors.darkSurface
             : AppColors.surface,
-        destinations: _destinations,
+        destinations: destinations,
       ),
     );
   }

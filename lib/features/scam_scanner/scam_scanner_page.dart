@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -92,13 +93,14 @@ class _ScamScannerPageState extends State<ScamScannerPage> {
     final tools = context.watch<ToolsController>();
     final finding = tools.scam;
     final theme = Theme.of(context);
+    final s = Strings.of(context);
     final color = finding == null
         ? theme.colorScheme.primary
         : RiskPalette.color(context, finding.level);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scam message scanner'),
+        title: Text(s.scamScannerTitle),
         actions: [
           if (finding != null)
             IconButton(
@@ -107,7 +109,7 @@ class _ScamScannerPageState extends State<ScamScannerPage> {
                 tools.clearScam();
               },
               icon: const Icon(Icons.clear_all_rounded),
-              tooltip: 'Clear',
+              tooltip: s.isHindi ? 'हटाएं' : 'Clear',
             ),
         ],
       ),
@@ -123,12 +125,14 @@ class _ScamScannerPageState extends State<ScamScannerPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Paste a message', style: AppTypography.sectionTitle),
+                Text(s.isHindi ? 'मैसेज यहाँ पेस्ट करें' : 'Paste a message', style: AppTypography.sectionTitle),
                 const SizedBox(height: 6),
                 Text(
-                  'Works for SMS, WhatsApp, email and anything else you received. '
-                  'You can also share a message straight to Jemixo Safe. The text '
-                  'stays on your phone.',
+                  s.isHindi
+                      ? 'SMS, WhatsApp, ईमेल या किसी भी चैट का संदिग्ध मैसेज यहाँ पेस्ट करें। सब कुछ आपके फ़ोन पर जाँचा जाता है।'
+                      : 'Works for SMS, WhatsApp, email and anything else you received. '
+                          'You can also share a message straight to Jemixo Safe. The text '
+                          'stays on your phone.',
                   style: AppTypography.small.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
@@ -140,7 +144,7 @@ class _ScamScannerPageState extends State<ScamScannerPage> {
                   maxLines: 10,
                   onChanged: tools.analyzeScam,
                   decoration: InputDecoration(
-                    hintText: 'Paste the full message here…',
+                    hintText: s.enterMessageHint,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(AppRadii.input),
                     ),
@@ -153,7 +157,9 @@ class _ScamScannerPageState extends State<ScamScannerPage> {
                   onChanged: _onSenderChanged,
                   textCapitalization: TextCapitalization.characters,
                   decoration: InputDecoration(
-                    hintText: 'Sender (optional): AX-SBIINB or +91 98xxxxxxx',
+                    hintText: s.isHindi
+                        ? 'भेजने वाला (वैकल्पिक): AX-SBIINB या +91 98xxxxxxx'
+                        : 'Sender (optional): AX-SBIINB or +91 98xxxxxxx',
                     prefixIcon: const Icon(Icons.person_outline_rounded),
                     isDense: true,
                     border: OutlineInputBorder(

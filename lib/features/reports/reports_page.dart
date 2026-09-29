@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -38,6 +39,7 @@ class _ReportsPageState extends State<ReportsPage> {
     final device = context.watch<DeviceService>();
     final storage = context.watch<StorageService>();
     final theme = Theme.of(context);
+    final s = Strings.of(context);
 
     final score = security.score;
     final level = score == null
@@ -45,7 +47,7 @@ class _ReportsPageState extends State<ReportsPage> {
         : RiskPalette.levelForScore(score);
 
     return AppPageScaffold(
-      title: 'Reports',
+      title: s.reportsTitle,
       child: ListView(
         padding: const EdgeInsets.fromLTRB(
           AppSpacing.screen,
@@ -56,11 +58,12 @@ class _ReportsPageState extends State<ReportsPage> {
         children: [
           if (!scanner.hasScanned)
             EmptyState(
-              title: 'No report data yet',
-              message:
-                  'Run a security scan first so there is something to report.',
+              title: s.isHindi ? 'अभी कोई रिपोर्ट डेटा नहीं है' : 'No report data yet',
+              message: s.isHindi
+                  ? 'पहले एक सुरक्षा स्कैन चलाएँ ताकि रिपोर्ट तैयार हो सके।'
+                  : 'Run a security scan first so there is something to report.',
               icon: Icons.fact_check_outlined,
-              actionLabel: security.isRunning ? null : 'Run scan',
+              actionLabel: security.isRunning ? null : s.startSafetyCheck,
               onAction: security.isRunning ? null : security.runScan,
             )
           else ...[
@@ -72,16 +75,18 @@ class _ReportsPageState extends State<ReportsPage> {
                     color: RiskPalette.color(context, level),
                     size: 150,
                     label: score == null
-                        ? 'Not scanned'
+                        ? (s.isHindi ? 'स्कैन नहीं हुआ' : 'Not scanned')
                         : RiskPalette.scoreBand(context, score),
-                    caption: 'Safety score',
+                    caption: s.safetyScoreCaption,
                     animate: false,
                   ),
                   const SizedBox(height: AppSpacing.standard),
                   Text(
                     security.lastScanAt == null
-                        ? 'Based on the current app inventory'
-                        : 'Based on the scan from ${formatDateTime(security.lastScanAt!.millisecondsSinceEpoch)}',
+                        ? (s.isHindi ? 'वर्तमान ऐप सूची पर आधारित' : 'Based on the current app inventory')
+                        : (s.isHindi
+                            ? '${formatDateTime(security.lastScanAt!.millisecondsSinceEpoch)} की जाँच पर आधारित'
+                            : 'Based on the scan from ${formatDateTime(security.lastScanAt!.millisecondsSinceEpoch)}'),
                     style: AppTypography.small.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -89,50 +94,52 @@ class _ReportsPageState extends State<ReportsPage> {
                 ],
               ),
             ),
-            const SectionHeader(title: 'Summary'),
+            SectionHeader(title: s.isHindi ? 'सारांश' : 'Summary'),
             AppCard(
               child: Column(
                 children: [
                   DetailRow(
-                    label: 'User apps',
+                    label: s.isHindi ? 'यूज़र ऐप्स' : 'User apps',
                     value: '${scanner.userApps.length}',
                   ),
                   DetailRow(
-                    label: 'System apps',
+                    label: s.isHindi ? 'सिस्टम ऐप्स' : 'System apps',
                     value: '${scanner.systemApps.length}',
                   ),
                   DetailRow(
-                    label: 'Needs review',
+                    label: s.isHindi ? 'समीक्षा ज़रूरी' : 'Needs review',
                     value: '${scanner.needsReview.length}',
                     valueColor: scanner.needsReview.isEmpty
                         ? AppColors.safe
                         : AppColors.warning,
                   ),
                   DetailRow(
-                    label: 'Debuggable builds',
+                    label: s.isHindi ? 'डीबगेबल ऐप्स' : 'Debuggable builds',
                     value: '${scanner.debuggableAppCount}',
                   ),
                   DetailRow(
-                    label: 'Sideloaded',
+                    label: s.isHindi ? 'बाहर से इंस्टॉल' : 'Sideloaded',
                     value: '${scanner.sideloadedAppCount}',
                   ),
                   DetailRow(
-                    label: 'Privacy score',
+                    label: s.privacyScore,
                     value: '${scanner.privacyScore}/100',
                   ),
                   if (device.device != null)
                     DetailRow(
-                      label: 'Device',
+                      label: s.isHindi ? 'डिवाइस' : 'Device',
                       value: device.device!.displayName,
                     ),
                   if (device.security != null)
                     DetailRow(
-                      label: 'Screen lock',
-                      value: device.security!.deviceSecure ? 'Set' : 'Not set',
+                      label: s.screenLock,
+                      value: device.security!.deviceSecure
+                          ? (s.isHindi ? 'चालू' : 'Set')
+                          : (s.isHindi ? 'बंद' : 'Not set'),
                     ),
                   if (storage.overview != null)
                     DetailRow(
-                      label: 'Free storage',
+                      label: s.isHindi ? 'ख़ाली स्टोरेज' : 'Free storage',
                       value: formatBytes(storage.overview!.freeBytes),
                     ),
                 ],
@@ -140,7 +147,9 @@ class _ReportsPageState extends State<ReportsPage> {
             ),
             if (scanner.needsReview.isNotEmpty) ...[
               SectionHeader(
-                title: 'Apps to review (${scanner.needsReview.length})',
+                title: s.isHindi
+                    ? 'समीक्षा के लिए ऐप्स (${scanner.needsReview.length})'
+                    : 'Apps to review (${scanner.needsReview.length})',
               ),
               AppCard(
                 child: Column(
@@ -186,16 +195,18 @@ class _ReportsPageState extends State<ReportsPage> {
                 ),
               ),
             ],
-            const SectionHeader(title: 'Export'),
+            SectionHeader(title: s.isHindi ? 'एक्सपोर्ट' : 'Export'),
             AppCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Share as PDF', style: AppTypography.cardTitle),
+                  Text(s.isHindi ? 'PDF में शेयर करें' : 'Share as PDF', style: AppTypography.cardTitle),
                   const SizedBox(height: 4),
                   Text(
-                    "The PDF is written to app storage on this device and handed to "
-                    "Android's share sheet. Nothing is uploaded by Jemixo Safe.",
+                    s.isHindi
+                        ? 'PDF रिपोर्ट सीधे आपके फ़ोन पर बनेगी और Android शेयर मेनू में खुलेगी। कुछ भी ऑनलाइन नहीं भेजा जाता।'
+                        : "The PDF is written to app storage on this device and handed to "
+                            "Android's share sheet. Nothing is uploaded by Jemixo Safe.",
                     style: AppTypography.small.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -213,7 +224,7 @@ class _ReportsPageState extends State<ReportsPage> {
                               storage: storage,
                               score: score,
                               scoreBand: score == null
-                                  ? 'Not scanned'
+                                  ? (s.isHindi ? 'स्कैन नहीं हुआ' : 'Not scanned')
                                   : RiskPalette.scoreBand(context, score),
                             ),
                       icon: _exporting
@@ -225,8 +236,8 @@ class _ReportsPageState extends State<ReportsPage> {
                           : const Icon(Icons.picture_as_pdf_outlined, size: 18),
                       label: Text(
                         _exporting
-                            ? 'Building report…'
-                            : 'Generate and share report',
+                            ? (s.isHindi ? 'रिपोर्ट तैयार हो रही है…' : 'Building report…')
+                            : (s.isHindi ? 'रिपोर्ट बनाएं और शेयर करें' : 'Generate and share report'),
                       ),
                       style: FilledButton.styleFrom(
                         minimumSize: const Size.fromHeight(48),

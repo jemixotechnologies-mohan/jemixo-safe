@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/theme/risk_palette.dart';
@@ -52,6 +53,7 @@ class _StoragePageState extends State<StoragePage> {
     final storage = context.watch<StorageService>();
     final overview = storage.overview;
     final theme = Theme.of(context);
+    final s = Strings.of(context);
     final pressure = storage.storagePressure();
 
     // A permission granted elsewhere changes what the breakdown can see.
@@ -67,12 +69,12 @@ class _StoragePageState extends State<StoragePage> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: AppSpacing.screen,
-        title: Text('Clean', style: AppTypography.pageTitle),
+        title: Text(s.cleanTitle, style: AppTypography.pageTitle),
         actions: [
           IconButton(
             onPressed: storage.isLoadingOverview ? null : _refresh,
             icon: const Icon(Icons.refresh_rounded),
-            tooltip: 'Refresh',
+            tooltip: s.refresh,
           ),
         ],
       ),
@@ -95,16 +97,16 @@ class _StoragePageState extends State<StoragePage> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Storage',
+                          s.storageOverview,
                           style: AppTypography.sectionTitle,
                         ),
                       ),
                       StatusPill(
                         label: pressure == RiskLevel.safe
-                            ? 'Healthy'
+                            ? s.healthy
                             : pressure == RiskLevel.medium
-                            ? 'Getting low'
-                            : 'Nearly full',
+                            ? s.gettingLow
+                            : s.nearlyFull,
                         color: RiskPalette.color(context, pressure),
                         dense: true,
                       ),
@@ -113,8 +115,8 @@ class _StoragePageState extends State<StoragePage> {
                   const SizedBox(height: 6),
                   Text(
                     overview == null
-                        ? 'Reading device storage…'
-                        : '${formatBytes(overview.usedBytes)} used of '
+                        ? (s.isHindi ? 'डिवाइस स्टोरेज जाँची जा रही है…' : 'Reading device storage…')
+                        : '${formatBytes(overview.usedBytes)} ${s.used.toLowerCase()} / '
                               '${formatBytes(overview.totalBytes)}',
                     style: AppTypography.bodyStrong,
                   ),
@@ -123,14 +125,14 @@ class _StoragePageState extends State<StoragePage> {
                     const LinearProgressIndicator(minHeight: 8)
                   else
                     MetricBar(
-                      label: 'Used',
+                      label: s.used,
                       valueLabel: formatPercent(overview?.usedFraction ?? 0),
                       fraction: overview?.usedFraction ?? 0,
                       color: RiskPalette.color(context, pressure),
                     ),
                   if (overview != null) ...[
                     MetricBar(
-                      label: 'Free',
+                      label: s.free,
                       valueLabel:
                           '${formatBytes(overview.freeBytes)} · ${formatPercent(1 - overview.usedFraction)}',
                       fraction: 1 - overview.usedFraction,
@@ -152,7 +154,7 @@ class _StoragePageState extends State<StoragePage> {
               ),
             ),
             if (storage.categories.isNotEmpty) ...[
-              const SectionHeader(title: 'Where space goes'),
+              SectionHeader(title: s.whereSpaceGoes),
               AppCard(
                 child: Column(
                   children: [
@@ -170,8 +172,10 @@ class _StoragePageState extends State<StoragePage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 6),
                       child: Text(
-                        '"Apps & system" is everything outside the media library: '
-                        'installed apps, their data and Android itself.',
+                        s.isHindi
+                            ? '"ऐप्स और सिस्टम" मीडिया लाइब्रेरी के बाहर का डेटा है: ऐप्स, उनका डेटा और स्वयं एंड्रॉयड।'
+                            : '"Apps & system" is everything outside the media library: '
+                                'installed apps, their data and Android itself.',
                         style: AppTypography.small.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
@@ -182,20 +186,22 @@ class _StoragePageState extends State<StoragePage> {
               ),
             ],
             if (!storage.canReadMedia) ...[
-              const SectionHeader(title: 'File access needed'),
+              SectionHeader(title: s.isHindi ? 'फ़ाइल अनुमति आवश्यक' : 'File access needed'),
               AppCard(
                 padding: const EdgeInsets.all(AppSpacing.standard),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Allow access to see your files',
+                      s.isHindi ? 'फ़ाइलें देखने के लिए अनुमति दें' : 'Allow access to see your files',
                       style: AppTypography.cardTitle,
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'Screenshots, photos and downloads need the media permission. '
-                      'Files stay on your device and are only read to measure them.',
+                      s.isHindi
+                          ? 'स्क्रीनशॉट, फ़ोटो और डाउनलोड देखने के लिए मीडिया अनुमति चाहिए। फ़ाइलें सिर्फ़ आपके फ़ोन पर ही जाँची जाती हैं।'
+                          : 'Screenshots, photos and downloads need the media permission. '
+                              'Files stay on your device and are only read to measure them.',
                       style: AppTypography.small.copyWith(
                         color: theme.colorScheme.onSurfaceVariant,
                       ),
@@ -208,7 +214,7 @@ class _StoragePageState extends State<StoragePage> {
                             ? null
                             : () => _requestMedia(storage),
                         icon: const Icon(Icons.perm_media_outlined, size: 18),
-                        label: Text(_requesting ? 'Waiting…' : 'Allow access'),
+                        label: Text(_requesting ? s.waiting : s.allowAccess),
                         style: FilledButton.styleFrom(
                           minimumSize: const Size.fromHeight(46),
                         ),
@@ -218,65 +224,66 @@ class _StoragePageState extends State<StoragePage> {
                 ),
               ),
             ],
-            const SectionHeader(title: 'Cleanup tools'),
+            SectionHeader(title: s.cleanupTools),
             FeatureCard(
               icon: Icons.chat_outlined,
-              title: 'WhatsApp cleaner',
+              title: s.whatsappCleanerTitle,
               subtitle: storage.whatsappLoaded
                   ? '${formatBytes(storage.whatsappTotalBytes)} in ${storage.whatsapp.length} files'
-                  : 'Old forwards, big videos and duplicate photos',
+                  : s.whatsappCleanerSubtitle,
               iconColor: AppColors.safe,
               onTap: () => _open(context, const WhatsAppCleanerPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.data_usage_rounded,
-              title: 'Large files',
+              title: s.largeFilesTitle,
               subtitle: storage.largeFilesLoaded && storage.largeFiles.isNotEmpty
                   ? '${storage.largeFiles.length} files · ${formatBytes(storage.largeFileTotalBytes)}'
-                  : 'Big videos, photos and downloads, sorted by size',
+                  : s.largeFilesSubtitle,
               onTap: () => _open(context, const LargeFilesPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.copy_all_rounded,
-              title: 'Duplicates',
+              title: s.duplicatesTitle,
               subtitle: storage.duplicates.isEmpty
-                  ? 'Identical copies found by content hash'
+                  ? s.duplicatesSubtitle
                   : '${storage.duplicateWastedBytesLabel} reclaimable',
               onTap: () => _open(context, const DuplicatesPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.photo_library_outlined,
-              title: 'Similar photos',
-              subtitle: 'Bursts and re-saved shots that look the same',
+              title: s.similarPhotosTitle,
+              subtitle: s.similarPhotosSubtitle,
               onTap: () => _open(context, const SimilarPhotosPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.screenshot_rounded,
-              title: 'Screenshots',
+              title: s.screenshotsTitle,
               subtitle: storage.screenshotsLoaded
                   ? '${storage.screenshots.length} found · ${formatBytes(storage.screenshotTotalBytes)}'
-                  : 'Old screenshots pile up quickly',
+                  : s.screenshotsSubtitle,
               onTap: () => _open(context, const ScreenshotsPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             FeatureCard(
               icon: Icons.download_rounded,
-              title: 'Downloads',
+              title: s.downloadsTitle,
               subtitle: storage.downloadsLoaded
                   ? '${storage.downloads.length} files'
-                  : 'Installers, archives and media in Downloads',
+                  : s.downloadsSubtitle,
               onTap: () => _open(context, const DownloadsPage()),
               statusIcon: Icons.chevron_right_rounded,
             ),
             const SizedBox(height: AppSpacing.standard),
-            const DisclaimerNote(
-              text:
-                  'Jemixo Safe only reads file names, sizes and dates. Nothing is '
-                  'uploaded, and nothing is deleted without your confirmation.',
+            DisclaimerNote(
+              text: s.isHindi
+                  ? 'Jemixo Safe केवल फ़ाइलों के नाम, आकार और दिनांक पढ़ता है। कुछ भी अपलोड नहीं किया जाता, और आपकी पुष्टि के बिना कुछ भी हटाया नहीं जाता।'
+                  : 'Jemixo Safe only reads file names, sizes and dates. Nothing is '
+                      'uploaded, and nothing is deleted without your confirmation.',
             ),
           ],
         ),

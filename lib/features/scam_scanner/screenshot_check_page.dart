@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/utils/haptics.dart';
@@ -78,6 +79,7 @@ class _ScreenshotCheckPageState extends State<ScreenshotCheckPage> {
     final storage = context.watch<StorageService>();
     final ocr = context.watch<OcrService>();
     final theme = Theme.of(context);
+    final s = Strings.of(context);
     final files = <StorageFile>[
       ...storage.screenshots,
       ...storage.images.where(
@@ -86,8 +88,8 @@ class _ScreenshotCheckPageState extends State<ScreenshotCheckPage> {
     ]..sort((a, b) => (b.modified ?? 0).compareTo(a.modified ?? 0));
 
     return AppPageScaffold(
-      title: 'Check a screenshot',
-      subtitle: 'Text is read on the phone, never uploaded',
+      title: s.checkScreenshot,
+      subtitle: s.screenshotOcrSubtitle,
       child: !storage.canReadMedia && !_loading
           ? const StorageAccessGate(required: StorageAccess.media)
           : _loading
@@ -102,11 +104,12 @@ class _ScreenshotCheckPageState extends State<ScreenshotCheckPage> {
                     AppSpacing.tight,
                   ),
                   child: InfoBanner(
-                    title: 'Tap a screenshot to check it',
-                    message:
-                        'Works for SMS, WhatsApp, email and Telegram screenshots in '
-                        'English and Hindi. You can also share any image to Jemixo Safe '
-                        'from the gallery.',
+                    title: s.isHindi ? 'जाँचने के लिए किसी स्क्रीनशॉट पर टैप करें' : 'Tap a screenshot to check it',
+                    message: s.isHindi
+                        ? 'SMS, WhatsApp, ईमेल या Telegram के स्क्रीनशॉट के लिए काम करता है। टेक्स्ट सीधे फ़ोन पर पढ़ा जाता है।'
+                        : 'Works for SMS, WhatsApp, email and Telegram screenshots in '
+                            'English and Hindi. You can also share any image to Jemixo Safe '
+                            'from the gallery.',
                     icon: Icons.document_scanner_outlined,
                   ),
                 ),
@@ -117,11 +120,12 @@ class _ScreenshotCheckPageState extends State<ScreenshotCheckPage> {
                   ),
                 Expanded(
                   child: files.isEmpty
-                      ? const EmptyState(
-                          title: 'No screenshots found',
-                          message:
-                              'Take a screenshot of the message, or share the image to '
-                              'Jemixo Safe from your gallery.',
+                      ? EmptyState(
+                          title: s.isHindi ? 'कोई स्क्रीनशॉट नहीं मिला' : 'No screenshots found',
+                          message: s.isHindi
+                              ? 'मैसेज का स्क्रीनशॉट लें, या गैलरी से Jemixo Safe में शेयर करें।'
+                              : 'Take a screenshot of the message, or share the image to '
+                                  'Jemixo Safe from your gallery.',
                           icon: Icons.screenshot_rounded,
                         )
                       : GridView.builder(

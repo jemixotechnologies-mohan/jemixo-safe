@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../core/constants/app_constants.dart';
+import '../core/l10n/strings.dart';
 import '../core/theme/app_colors.dart';
 import '../core/theme/app_theme.dart';
 
@@ -41,7 +42,10 @@ class AppCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onTap,
-          child: Padding(padding: padding, child: child),
+          child: DefaultTextStyle.merge(
+            style: TextStyle(color: theme.colorScheme.onSurface),
+            child: Padding(padding: padding, child: child),
+          ),
         ),
       ),
     );
@@ -69,7 +73,14 @@ class SectionHeader extends StatelessWidget {
       padding: padding,
       child: Row(
         children: [
-          Expanded(child: Text(title, style: AppTypography.sectionTitle)),
+          Expanded(
+            child: Text(
+              title,
+              style: AppTypography.sectionTitle.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+          ),
           if (actionLabel != null && onAction != null)
             TextButton(
               onPressed: onAction,
@@ -574,7 +585,9 @@ class EmptyState extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: AppTypography.sectionTitle,
+            style: AppTypography.sectionTitle.copyWith(
+              color: theme.colorScheme.onSurface,
+            ),
           ),
           const SizedBox(height: 8),
           ConstrainedBox(
@@ -679,7 +692,9 @@ class MetricBar extends StatelessWidget {
               Expanded(
                 child: Text(
                   label,
-                  style: AppTypography.bodyStrong,
+                  style: AppTypography.bodyStrong.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -718,13 +733,18 @@ class MetricBar extends StatelessWidget {
 
 /// Disclaimer block. Rendered beneath every score and risk surface.
 class DisclaimerNote extends StatelessWidget {
-  const DisclaimerNote({super.key, this.text = AppConstants.disclaimerScore});
+  const DisclaimerNote({super.key, this.text});
 
-  final String text;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final s = Strings.of(context);
+    final displayText = text == null || text == AppConstants.disclaimerScore
+        ? s.disclaimerScore
+        : (text == AppConstants.disclaimerRisk ? s.disclaimerRisk : text!);
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -736,7 +756,7 @@ class DisclaimerNote extends StatelessWidget {
         const SizedBox(width: 7),
         Expanded(
           child: Text(
-            text,
+            displayText,
             style: AppTypography.small.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
               height: 1.45,
@@ -790,7 +810,13 @@ class AppPageScaffold extends StatelessWidget {
         automaticallyImplyLeading: showBack,
         actions: actions,
       ),
-      body: SafeArea(top: false, child: child),
+      body: SafeArea(
+        top: false,
+        child: DefaultTextStyle.merge(
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+          child: child,
+        ),
+      ),
       bottomNavigationBar: bottom,
       floatingActionButton: floatingActionButton,
     );
@@ -803,9 +829,13 @@ Future<bool> confirmDestructiveAction(
   BuildContext context, {
   required String title,
   required String message,
-  String confirmLabel = 'Delete',
-  String cancelLabel = 'Cancel',
+  String? confirmLabel,
+  String? cancelLabel,
 }) async {
+  final s = Strings.of(context);
+  final cLabel = confirmLabel ?? s.delete;
+  final canLabel = cancelLabel ?? s.cancel;
+
   final result = await showDialog<bool>(
     context: context,
     builder: (context) => AlertDialog(
@@ -814,7 +844,7 @@ Future<bool> confirmDestructiveAction(
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(false),
-          child: Text(cancelLabel),
+          child: Text(canLabel),
         ),
         FilledButton(
           onPressed: () => Navigator.of(context).pop(true),
@@ -822,7 +852,7 @@ Future<bool> confirmDestructiveAction(
             backgroundColor: AppColors.danger,
             minimumSize: const Size(96, 44),
           ),
-          child: Text(confirmLabel),
+          child: Text(cLabel),
         ),
       ],
     ),

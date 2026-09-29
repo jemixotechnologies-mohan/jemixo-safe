@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/l10n/strings.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_theme.dart';
 import '../../widgets/app_widgets.dart';
@@ -26,10 +27,12 @@ class MorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = Strings.of(context);
+
     return Scaffold(
       appBar: AppBar(
         titleSpacing: AppSpacing.screen,
-        title: Text('More', style: AppTypography.pageTitle),
+        title: Text(s.moreTitle, style: AppTypography.pageTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(
@@ -39,115 +42,117 @@ class MorePage extends StatelessWidget {
           AppSpacing.standard * 2,
         ),
         children: [
-          const SectionHeader(title: 'Scam protection'),
+          SectionHeader(title: s.scamProtectionSection),
           FeatureCard(
             icon: Icons.phone_in_talk_rounded,
-            title: 'Scam call in progress?',
-            subtitle: 'The four things to do while they are still talking',
+            title: s.threatCallTitle,
+            subtitle: s.threatCallSubtitle,
             iconColor: AppColors.warning,
             onTap: () => _open(context, const ScamCallPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.sos_rounded,
-            title: 'I think I got scammed',
-            subtitle: 'Call 1930, freeze the money, keep the evidence',
+            title: s.gotScammedTitle,
+            subtitle: s.gotScammedSubtitle,
             iconColor: AppColors.danger,
             onTap: () => _open(context, const EmergencyPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.document_scanner_outlined,
-            title: 'Check a screenshot',
-            subtitle: 'Read a message screenshot on the phone and scan it',
+            title: s.checkScreenshotTitle,
+            subtitle: s.checkScreenshotSubtitle,
             onTap: () => _open(context, const ScreenshotCheckPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.call_outlined,
-            title: 'Check a phone number',
-            subtitle: 'TRAI number rules: 140, 1600, foreign, personal',
+            title: s.checkPhoneTitle,
+            subtitle: s.checkPhoneSubtitle,
             onTap: () => _open(context, const CallCheckPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.visibility_outlined,
-            title: 'Apps with special access',
-            subtitle: 'Accessibility, notification access, device admin, hidden apps',
+            title: s.appsSpecialAccessTitle,
+            subtitle: s.appsSpecialAccessSubtitle,
             onTap: () => _open(context, const SpecialAccessPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.compare_arrows_rounded,
-            title: 'What changed',
-            subtitle: 'New apps and permissions since the previous check',
+            title: s.whatChangedTitle,
+            subtitle: s.whatChangedSubtitle,
             onTap: () => _open(context, const ChangesPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.account_balance_outlined,
-            title: 'Bank & loan app check',
-            subtitle: 'Fake banking apps and unregulated lenders on this phone',
+            title: s.financeAppsTitle,
+            subtitle: s.financeAppsSubtitle,
             iconColor: AppColors.gold,
             onTap: () => _open(context, const FinanceAppsPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
-          const SectionHeader(title: 'Tools'),
+          SectionHeader(title: s.toolsSection),
           FeatureCard(
             icon: Icons.fact_check_outlined,
-            title: 'Reports',
-            subtitle: 'Full breakdown of your security and privacy position',
+            title: s.reportsTitle,
+            subtitle: s.reportsSubtitle,
             onTap: () => _open(context, const ReportsPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.history_rounded,
-            title: 'Scan history',
-            subtitle: 'Past scans, stored only on this device',
+            title: s.historyTitle,
+            subtitle: s.historySubtitle,
             onTap: () => _open(context, const HistoryPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.qr_code_scanner_rounded,
-            title: 'QR scanner',
-            subtitle: 'Read a code and check what it points to',
+            title: s.qrScannerTitle,
+            subtitle: s.qrScannerSubtitle,
             onTap: () => _open(context, const QrScannerPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.developer_mode_rounded,
-            title: 'Hardware tests',
-            subtitle: 'Sensor, proximity, compass and torch checks',
+            title: s.hardwareTestsTitle,
+            subtitle: s.hardwareTestsSubtitle,
             onTap: () => _open(context, const HardwareTestsPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
-          const SectionHeader(title: 'Storage shortcuts'),
+          SectionHeader(title: s.storageShortcutsSection),
           FeatureCard(
             icon: Icons.copy_all_rounded,
-            title: 'Duplicates',
-            subtitle: 'Identical copies found by content hash',
+            title: s.duplicatesTitle,
+            subtitle: s.duplicatesSubtitle,
             onTap: () => _open(context, const DuplicatesPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.download_rounded,
-            title: 'Downloads',
-            subtitle: 'Installers, archives and media',
+            title: s.downloadsTitle,
+            subtitle: s.downloadsSubtitle,
             onTap: () => _open(context, const DownloadsPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
-          const SectionHeader(title: 'App'),
+          SectionHeader(title: s.appSection),
           FeatureCard(
             icon: Icons.settings_outlined,
-            title: 'Settings',
-            subtitle: 'Simple mode, alerts, appearance and data controls',
+            title: s.settingsTitle,
+            subtitle: s.isHindi
+                ? 'भाषा, सरल मोड, अलर्ट, थीम और डेटा सेटिंग्स'
+                : 'Language, simple mode, alerts, appearance and data controls',
             onTap: () => _open(context, const SettingsPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),
           FeatureCard(
             icon: Icons.policy_outlined,
-            title: 'Privacy policy',
-            subtitle: 'What the app reads and what it never sends',
+            title: s.privacyPolicyTitle,
+            subtitle: s.privacyPolicySubtitle,
             onTap: () => _open(context, const PrivacyPolicyPage()),
             statusIcon: Icons.chevron_right_rounded,
           ),

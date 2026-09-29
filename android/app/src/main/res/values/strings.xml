@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Jemixo Safe</string>
     <string name="process_text_label">Check with Jemixo Safe</string>
     <string name="tile_label">Check clipboard</string>
     <string name="widget_label">Jemixo Safe status</string>
