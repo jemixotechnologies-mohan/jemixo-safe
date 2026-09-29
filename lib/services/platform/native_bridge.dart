@@ -212,6 +212,9 @@ class NativeBridge {
   Future<List<Map<String, dynamic>>> findImages({int limit = 300}) =>
       _invokeList('findImages', {'limit': limit});
 
+  Future<List<Map<String, dynamic>>> findWhatsApp() =>
+      _invokeList('findWhatsApp');
+
   Future<List<Map<String, dynamic>>> getDownloads() =>
       _invokeList('getDownloads');
 

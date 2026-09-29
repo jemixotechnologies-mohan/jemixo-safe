@@ -189,6 +189,27 @@ class StorageModule(private val context: Context) {
         }
     }
 
+    /**
+     * Every indexed file under WhatsApp / WhatsApp Business media folders.
+     * Both the Android 11+ location (Android/media/com.whatsapp/WhatsApp/Media)
+     * and the legacy one (WhatsApp/Media) end in the same path segment, so two
+     * patterns cover all versions. Documents are not indexed for apps holding
+     * only the media permission, so they are simply absent.
+     */
+    fun findWhatsApp(call: MethodCall, result: MethodChannel.Result) {
+        try {
+            val rows = queryFiles(
+                "${FileCols.DATA} LIKE ? OR ${FileCols.DATA} LIKE ?",
+                arrayOf("%/WhatsApp/Media/%", "%/WhatsApp Business/Media/%"),
+                "${FileCols.DATE_MODIFIED} DESC",
+                40_000,
+            )
+            result.success(rows.map { it.toMap() })
+        } catch (t: Throwable) {
+            result.error("WHATSAPP_SCAN_FAILED", t.message, null)
+        }
+    }
+
     /** Most recent photos from the media library, for the similar-photo finder. */
     fun findImages(call: MethodCall, result: MethodChannel.Result) {
         val limit = call.argument<Number>("limit")?.toInt() ?: 300

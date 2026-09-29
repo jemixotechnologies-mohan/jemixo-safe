@@ -13,6 +13,7 @@ import 'duplicates_page.dart';
 import 'large_files_page.dart';
 import 'screenshots_page.dart';
 import 'similar_photos_page.dart';
+import 'whatsapp_cleaner_page.dart';
 
 /// Clean tab root. Storage overview plus the five cleanup surfaces.
 class StoragePage extends StatefulWidget {
@@ -218,6 +219,16 @@ class _StoragePageState extends State<StoragePage> {
               ),
             ],
             const SectionHeader(title: 'Cleanup tools'),
+            FeatureCard(
+              icon: Icons.chat_outlined,
+              title: 'WhatsApp cleaner',
+              subtitle: storage.whatsappLoaded
+                  ? '${formatBytes(storage.whatsappTotalBytes)} in ${storage.whatsapp.length} files'
+                  : 'Old forwards, big videos and duplicate photos',
+              iconColor: AppColors.safe,
+              onTap: () => _open(context, const WhatsAppCleanerPage()),
+              statusIcon: Icons.chevron_right_rounded,
+            ),
             FeatureCard(
               icon: Icons.data_usage_rounded,
               title: 'Large files',

@@ -5,6 +5,7 @@ import '../../core/utils/formatters.dart';
 import '../../core/theme/risk_palette.dart';
 import '../platform/native_bridge.dart';
 import '../platform/native_models.dart';
+import 'whatsapp_media.dart';
 
 /// Storage inventory, large files, duplicates, screenshots and downloads.
 ///
@@ -25,6 +26,7 @@ class StorageService extends ChangeNotifier {
   List<StorageFile> _screenshots = const [];
   List<StorageFile> _downloads = const [];
   List<StorageFile> _images = const [];
+  List<WhatsAppMedia> _whatsapp = const [];
   StorageAccess _access = StorageAccess.none;
   int _sdkInt = 0;
   String? _lastError;
@@ -35,6 +37,8 @@ class StorageService extends ChangeNotifier {
   bool _loadingScreenshots = false;
   bool _loadingDownloads = false;
   bool _loadingImages = false;
+  bool _loadingWhatsApp = false;
+  bool _whatsappLoaded = false;
 
   bool _largeFilesLoaded = false;
   int _largeFilesMinBytes = 0;
@@ -52,6 +56,7 @@ class StorageService extends ChangeNotifier {
   List<StorageFile> get screenshots => _screenshots;
   List<StorageFile> get downloads => _downloads;
   List<StorageFile> get images => _images;
+  List<WhatsAppMedia> get whatsapp => _whatsapp;
   String? get lastError => _lastError;
 
   StorageAccess get access => _access;
@@ -64,6 +69,11 @@ class StorageService extends ChangeNotifier {
   bool get isLoadingScreenshots => _loadingScreenshots;
   bool get isLoadingDownloads => _loadingDownloads;
   bool get isLoadingImages => _loadingImages;
+  bool get isLoadingWhatsApp => _loadingWhatsApp;
+  bool get whatsappLoaded => _whatsappLoaded;
+
+  int get whatsappTotalBytes =>
+      _whatsapp.fold(0, (sum, m) => sum + m.file.sizeBytes);
 
   bool get largeFilesLoaded => _largeFilesLoaded;
   bool get duplicatesLoaded => _duplicatesLoaded;
@@ -96,6 +106,7 @@ class StorageService extends ChangeNotifier {
         _duplicatesLoaded = false;
         _screenshotsLoaded = false;
         _downloadsLoaded = false;
+        _whatsappLoaded = false;
       }
     } catch (_) {
       // Keep the previous state; the UI will offer the permission again.
@@ -241,6 +252,28 @@ class StorageService extends ChangeNotifier {
     }
   }
 
+  Future<void> loadWhatsApp({bool force = false}) async {
+    if (_loadingWhatsApp) return;
+    if (_whatsappLoaded && !force) return;
+    _loadingWhatsApp = true;
+    _lastError = null;
+    notifyListeners();
+    try {
+      final raw = await _bridge.findWhatsApp();
+      _whatsapp = raw
+          .map(StorageFile.fromMap)
+          .map(WhatsAppMedia.from)
+          .whereType<WhatsAppMedia>()
+          .toList(growable: false);
+      _whatsappLoaded = true;
+    } on NativeBridgeException catch (e) {
+      _lastError = e.message;
+    } finally {
+      _loadingWhatsApp = false;
+      notifyListeners();
+    }
+  }
+
   /// Recent photos from the media library, for the similar-photo finder.
   Future<List<StorageFile>> loadImages({int limit = 300}) async {
     if (_loadingImages) return _images;
@@ -325,6 +358,7 @@ class StorageService extends ChangeNotifier {
     _screenshots = _screenshots.where((f) => !ids.contains(f.id)).toList();
     _downloads = _downloads.where((f) => !ids.contains(f.id)).toList();
     _images = _images.where((f) => !ids.contains(f.id)).toList();
+    _whatsapp = _whatsapp.where((m) => !ids.contains(m.file.id)).toList();
     _duplicates = _duplicates
         .map(
           (group) => DuplicateGroup(
@@ -350,7 +384,7 @@ class StorageService extends ChangeNotifier {
 
   /// Small preview, cached per file. Returns null for non-images.
   Future<Uint8List?> thumbnail(StorageFile file, {int size = 128}) {
-    if (!file.isImage) return Future.value(null);
+    if (!file.isImage && !file.isVideo) return Future.value(null);
     final cached = _thumbnails[file.id];
     if (cached != null) return cached;
     if (_thumbnails.length >= _thumbnailCacheLimit) {

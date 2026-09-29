@@ -260,7 +260,7 @@ class _ThumbnailState extends State<_Thumbnail> {
 
   void _start() {
     final loader = widget.loader;
-    _future = loader == null || !widget.file.isImage
+    _future = loader == null || !(widget.file.isImage || widget.file.isVideo)
         ? null
         : loader(widget.file);
   }

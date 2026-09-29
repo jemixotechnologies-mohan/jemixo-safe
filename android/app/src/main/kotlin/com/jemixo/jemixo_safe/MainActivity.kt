@@ -97,6 +97,7 @@ class MainActivity : FlutterActivity() {
             "findDuplicates" -> background(result) { storage.findDuplicates(call, it) }
             "findScreenshots" -> background(result) { storage.findScreenshots(call, it) }
             "findImages" -> background(result) { storage.findImages(call, it) }
+            "findWhatsApp" -> background(result) { storage.findWhatsApp(call, it) }
             "getDownloads" -> background(result) { storage.getDownloads(call, it) }
             "getThumbnail" -> background(result) { storage.getThumbnail(call, it) }
             "deleteFiles" -> background(result) { storage.deleteFiles(call, it) }

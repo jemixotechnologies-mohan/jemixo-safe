@@ -29,6 +29,7 @@ import '../scam_scanner/scam_scanner_page.dart';
 import '../security/security_page.dart';
 import '../settings/settings_page.dart';
 import '../storage/storage_page.dart';
+import '../storage/whatsapp_cleaner_page.dart';
 import '../url_checker/url_checker_page.dart';
 
 /// Home tab. Answers "is anything wrong right now?" in one screen, then routes
@@ -244,6 +245,14 @@ class _DashboardPageState extends State<DashboardPage> {
                   ? 'Large files, duplicates, screenshots, downloads'
                   : '${formatBytes(storage.overview!.freeBytes)} free',
               onTap: () => _open(context, const StoragePage()),
+            ),
+            _QuickTool(
+              icon: Icons.chat_outlined,
+              title: 'WhatsApp cleaner',
+              subtitle: storage.whatsappLoaded
+                  ? '${formatBytes(storage.whatsappTotalBytes)} of WhatsApp media'
+                  : 'Free up space from old forwards and big videos',
+              onTap: () => _open(context, const WhatsAppCleanerPage()),
             ),
             FeatureCard(
               icon: Icons.health_and_safety_outlined,

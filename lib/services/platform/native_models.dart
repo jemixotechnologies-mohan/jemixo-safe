@@ -240,6 +240,7 @@ class StorageFile {
   final int? height;
 
   bool get isImage => (mimeType ?? '').startsWith('image/');
+  bool get isVideo => (mimeType ?? '').startsWith('video/');
   bool get isApk =>
       name.toLowerCase().endsWith('.apk') ||
       mimeType == 'application/vnd.android.package-archive';
