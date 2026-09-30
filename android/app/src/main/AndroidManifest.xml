@@ -1,13 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Package inventory: core of the safety scan. Play Console needs a
-         declaration for this permission (permitted use: device security).
-         If the declaration is refused, remove this line: the scanner then
-         falls back to the launcher query below and still lists every app the
-         user can open. -->
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
-        tools:ignore="QueryAllPackagesPermission" />
+    <!-- Package visibility: uses <queries> below to inspect launchable apps without requiring the restricted QUERY_ALL_PACKAGES permission. -->
 
     <!-- Camera for the QR scanner only. -->
     <uses-permission android:name="android.permission.CAMERA" />

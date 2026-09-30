@@ -55,12 +55,12 @@
         <h2>3. Android Permissions & How They Are Used</h2>
         <p>Jemixo Safe requests only the minimum permissions necessary to perform its safety and cleanup functions:</p>
 
-        <h3>A. Installed Apps Inventory (QUERY_ALL_PACKAGES)</h3>
+        <h3>A. Installed Apps Visibility (Package Intent Filtering)</h3>
         <p>
           <strong>Purpose:</strong> Device security and fraud prevention. To identify counterfeit banking apps, fake government portals, unverified high-interest loan apps, and apps requesting dangerous combinations of accessibility, SMS, and overlay permissions.
         </p>
         <p>
-          <strong>Privacy Guarantee:</strong> The list of installed packages is inspected strictly on the device using local signature rules and threat databases. It is never transmitted or uploaded over the internet.
+          <strong>Privacy Guarantee:</strong> Installed launchable packages are inspected strictly on the device using local signature rules and threat databases without broad restricted queries. App details are never transmitted or uploaded over the internet.
         </p>
 
         <h3>B. Photos, Videos, and Media (READ_MEDIA_IMAGES, READ_MEDIA_VIDEO, READ_MEDIA_AUDIO)</h3>

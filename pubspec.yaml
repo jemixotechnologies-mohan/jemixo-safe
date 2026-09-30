@@ -1,7 +1,7 @@
 name: jemixo_safe
 description: "Jemixo Safe — on-device Android security, privacy and device utility. Know Your Phone. Protect Your Privacy."
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ^3.13.1
